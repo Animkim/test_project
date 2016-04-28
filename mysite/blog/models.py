@@ -6,6 +6,9 @@ class BlogPost(models.Model):
     body = models.TextField()
     timestamp = models.DateTimeField()
 
+    class Meta:
+        ordering = ('-timestamp',)
+
 class BlogPostAdmin(admin.ModelAdmin):
     list_display = ('title', 'timestamp')
 admin.site.register(BlogPost, BlogPostAdmin)
