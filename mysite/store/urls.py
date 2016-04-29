@@ -1,7 +1,6 @@
 from django.conf.urls.defaults import *
-from mysite.blog.views import archive
+from mysite.store.views import category
 
 urlpatterns = patterns('',
-    url(r'^$', archive),
+    url(r'^$', category),
 )
-

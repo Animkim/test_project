@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib import admin
 
+
 class BlogPost(models.Model):
     title = models.CharField(max_length=150)
     body = models.TextField()
@@ -8,6 +9,7 @@ class BlogPost(models.Model):
 
     class Meta:
         ordering = ('-timestamp',)
+
 
 class BlogPostAdmin(admin.ModelAdmin):
     list_display = ('title', 'timestamp')
