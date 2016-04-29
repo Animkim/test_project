@@ -1,11 +1,16 @@
+{% load static %}
+{% get_static_prefix as STATIC_PREFIX %}
 <!DOCTYPE html>
 <html>
 <head lang="en">
     <meta charset="UTF-8">
-    <title></title>
+    <title>{% block title %}{% endblock %}</title>
+    <link rel="stylesheet" href="{{ STATIC_PREFIX }}css/style.css">
 </head>
 <body>
-{% block content %}
-{% endblock %}
+<div class="wrapper">
+    {% block content %}
+    {% endblock %}
+</div>
 </body>
 </html>

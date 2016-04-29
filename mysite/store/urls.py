@@ -1,6 +1,6 @@
 from django.conf.urls.defaults import *
-from mysite.store.views import category
+from mysite.store.views import index
 
 urlpatterns = patterns('',
-    url(r'^$', category),
+    url(r'^$', index),
 )
