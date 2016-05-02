@@ -3,7 +3,7 @@ from django.contrib import admin
 
 
 class Category(models.Model):
-    parent = models.ForeignKey('self', related_name='child', null=True, blank=True)
+    parent = models.ForeignKey('self', null=True, blank=True, related_name='children')
     title = models.CharField(max_length=50)
     slug = models.SlugField(max_length=70)
     image = models.ImageField(upload_to='files/media')
