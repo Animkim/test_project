@@ -6,5 +6,5 @@ urlpatterns = patterns('',
     url(r'^(?P<category_name>[\w\-]+)/$', views.category),
     url(r'^[\w\-]+/(?P<category_name>[\w\-]+)/$', views.category),
     url(r'^[\w\-]+/[\w\-]+/(?P<category_name>[\w\-]+)/$', views.category),
-    url(r'^/search/$', views.search),
+    url(r'^search/$', views.search),
 )

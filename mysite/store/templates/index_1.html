@@ -4,7 +4,17 @@
     <ul class="nav"><!-- 1 уровень -->
         {% for category in category_parent %}
         <li><a href="{{ category.get_absolute_url }}">{{ category.title }} </a>
-
+            <ul class="sub"><!-- 2 уровень -->
+                {% for category in category.children.all %}
+                    <li><a href="{{ category.get_absolute_url }}">{{ category.title }}</a>
+                        <ul class="sub">
+                            {% for category in category.children.all %}
+                                 <li><a href="{{ category.get_absolute_url }}">{{ category.title }}</a>
+                            {% endfor %}
+                        </ul>
+                    </li>
+                {% endfor %}
+            </ul><!--  конец 2 уровня -->
         </li>
         {% endfor %}
     </ul><!--  конец 1 уровня -->

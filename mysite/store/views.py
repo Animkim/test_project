@@ -19,10 +19,9 @@ def index(request):
 
 
 def category(request, category_name):
-    category = Category.objects.get(slug=category_name)
-    items = Product.objects.filter(category=category)
-    category_parent = category.children.all()
-
+    categories = Category.objects.filter(slug=category_name)
+    items = Product.objects.filter(category=categories)
+    category_parent = Category.objects.filter(parent=None)
     paginator = Paginator(items, 12)
     page = request.GET.get('page', 1)
     try:
@@ -36,12 +35,9 @@ def category(request, category_name):
 
 
 def search(request):
-    category_parent = Category.objects.filter(parent=None)
+    print 'lalalal'
+    query = request.GET.get('q')
     if 'q' in request.GET:
-        q = request.GET['q']
-        print q
-        items = Product.objects.filter(title__icontains=q)
-        return render_to_response('index_1.html', {'items': items, 'category_parent': category_parent})
-    else:
-        return HttpResponse('Please submit a search term.')
+        items = Product.objects.filter(title__icontains=query)
+    return render_to_response("index_1.html", {'items': items})
 
