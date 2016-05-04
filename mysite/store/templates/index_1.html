@@ -1,9 +1,15 @@
 {% extends "base_1.html" %}
 
 {% block category %}
-    {% for category in categores %}
-        <li><a href="/{{ category.slug }}">{{ category.title }} </a></li>
-    {% endfor %}
+    <ul class="nav"><!-- 1 уровень -->
+        {% for category in category_parent %}
+        <li><a href="{{ category.get_absolute_url }}">{{ category.title }} </a>
+
+        </li>
+        {% endfor %}
+    </ul><!--  конец 1 уровня -->
+
+
 {% endblock %}
 
 {% block content %}
@@ -21,7 +27,6 @@
         {% if items.has_previous %}
             <a href="?page={{ items.previous_page_number }}">Назад</a>
         {% endif %}
-
         <span class="current">
             Страница {{ items.number }} из {{ items.paginator.num_pages }}.
         </span>

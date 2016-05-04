@@ -74,6 +74,10 @@ header {
     display: block;
 }
 
+.down-menu {
+    padding-left: 15px;
+}
+
 .content {
     float: right;
     width: 80%;
