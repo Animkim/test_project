@@ -1,0 +1,33 @@
+{% extends "base_1.html" %}
+
+{% block category %}
+    {% for category in categores %}
+        <li><a href="/{{ category.slug }}">{{ category.title }} </a></li>
+    {% endfor %}
+{% endblock %}
+
+{% block content %}
+    {% for item in items.object_list %}
+        <div class="item">
+            <img width="100" height="50" src="" alt="" />
+            {{ item.title }}
+        </div>
+    {% endfor %}
+{% endblock %}
+
+{% block pagination %}
+<div class="pagination">
+    <span class="step-links">
+        {% if items.has_previous %}
+            <a href="?page={{ items.previous_page_number }}">Назад</a>
+        {% endif %}
+
+        <span class="current">
+            Страница {{ items.number }} из {{ items.paginator.num_pages }}.
+        </span>
+        {% if items.has_next %}
+            <a href="?page={{ items.next_page_number }}">Вперед</a>
+        {% endif %}
+    </span>
+</div>
+{% endblock %}
