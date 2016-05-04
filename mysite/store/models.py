@@ -8,11 +8,14 @@ class Category(models.Model):
     slug = models.SlugField(max_length=70)
     image = models.ImageField(upload_to='files/media')
 
-    class Meta:
-        ordering = ('title',)
+    def url(self):
+        return "/123/"
 
     def __unicode__(self):
         return self.title
+
+    class Meta:
+        ordering = ('title',)
 
 class Product(models.Model):
     category = models.ForeignKey(Category)
