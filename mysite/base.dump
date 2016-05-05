@@ -1,0 +1,1343 @@
+--
+-- PostgreSQL database dump
+--
+
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SET check_function_bodies = false;
+SET client_min_messages = warning;
+
+--
+-- Name: plpgsql; Type: EXTENSION; Schema: -; Owner: 
+--
+
+CREATE EXTENSION IF NOT EXISTS plpgsql WITH SCHEMA pg_catalog;
+
+
+--
+-- Name: EXTENSION plpgsql; Type: COMMENT; Schema: -; Owner: 
+--
+
+COMMENT ON EXTENSION plpgsql IS 'PL/pgSQL procedural language';
+
+
+SET search_path = public, pg_catalog;
+
+SET default_tablespace = '';
+
+SET default_with_oids = false;
+
+--
+-- Name: auth_group; Type: TABLE; Schema: public; Owner: animkim; Tablespace: 
+--
+
+CREATE TABLE auth_group (
+    id integer NOT NULL,
+    name character varying(80) NOT NULL
+);
+
+
+ALTER TABLE auth_group OWNER TO animkim;
+
+--
+-- Name: auth_group_id_seq; Type: SEQUENCE; Schema: public; Owner: animkim
+--
+
+CREATE SEQUENCE auth_group_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE auth_group_id_seq OWNER TO animkim;
+
+--
+-- Name: auth_group_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: animkim
+--
+
+ALTER SEQUENCE auth_group_id_seq OWNED BY auth_group.id;
+
+
+--
+-- Name: auth_group_permissions; Type: TABLE; Schema: public; Owner: animkim; Tablespace: 
+--
+
+CREATE TABLE auth_group_permissions (
+    id integer NOT NULL,
+    group_id integer NOT NULL,
+    permission_id integer NOT NULL
+);
+
+
+ALTER TABLE auth_group_permissions OWNER TO animkim;
+
+--
+-- Name: auth_group_permissions_id_seq; Type: SEQUENCE; Schema: public; Owner: animkim
+--
+
+CREATE SEQUENCE auth_group_permissions_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE auth_group_permissions_id_seq OWNER TO animkim;
+
+--
+-- Name: auth_group_permissions_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: animkim
+--
+
+ALTER SEQUENCE auth_group_permissions_id_seq OWNED BY auth_group_permissions.id;
+
+
+--
+-- Name: auth_message; Type: TABLE; Schema: public; Owner: animkim; Tablespace: 
+--
+
+CREATE TABLE auth_message (
+    id integer NOT NULL,
+    user_id integer NOT NULL,
+    message text NOT NULL
+);
+
+
+ALTER TABLE auth_message OWNER TO animkim;
+
+--
+-- Name: auth_message_id_seq; Type: SEQUENCE; Schema: public; Owner: animkim
+--
+
+CREATE SEQUENCE auth_message_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE auth_message_id_seq OWNER TO animkim;
+
+--
+-- Name: auth_message_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: animkim
+--
+
+ALTER SEQUENCE auth_message_id_seq OWNED BY auth_message.id;
+
+
+--
+-- Name: auth_permission; Type: TABLE; Schema: public; Owner: animkim; Tablespace: 
+--
+
+CREATE TABLE auth_permission (
+    id integer NOT NULL,
+    name character varying(50) NOT NULL,
+    content_type_id integer NOT NULL,
+    codename character varying(100) NOT NULL
+);
+
+
+ALTER TABLE auth_permission OWNER TO animkim;
+
+--
+-- Name: auth_permission_id_seq; Type: SEQUENCE; Schema: public; Owner: animkim
+--
+
+CREATE SEQUENCE auth_permission_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE auth_permission_id_seq OWNER TO animkim;
+
+--
+-- Name: auth_permission_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: animkim
+--
+
+ALTER SEQUENCE auth_permission_id_seq OWNED BY auth_permission.id;
+
+
+--
+-- Name: auth_user; Type: TABLE; Schema: public; Owner: animkim; Tablespace: 
+--
+
+CREATE TABLE auth_user (
+    id integer NOT NULL,
+    username character varying(30) NOT NULL,
+    first_name character varying(30) NOT NULL,
+    last_name character varying(30) NOT NULL,
+    email character varying(75) NOT NULL,
+    password character varying(128) NOT NULL,
+    is_staff boolean NOT NULL,
+    is_active boolean NOT NULL,
+    is_superuser boolean NOT NULL,
+    last_login timestamp with time zone NOT NULL,
+    date_joined timestamp with time zone NOT NULL
+);
+
+
+ALTER TABLE auth_user OWNER TO animkim;
+
+--
+-- Name: auth_user_groups; Type: TABLE; Schema: public; Owner: animkim; Tablespace: 
+--
+
+CREATE TABLE auth_user_groups (
+    id integer NOT NULL,
+    user_id integer NOT NULL,
+    group_id integer NOT NULL
+);
+
+
+ALTER TABLE auth_user_groups OWNER TO animkim;
+
+--
+-- Name: auth_user_groups_id_seq; Type: SEQUENCE; Schema: public; Owner: animkim
+--
+
+CREATE SEQUENCE auth_user_groups_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE auth_user_groups_id_seq OWNER TO animkim;
+
+--
+-- Name: auth_user_groups_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: animkim
+--
+
+ALTER SEQUENCE auth_user_groups_id_seq OWNED BY auth_user_groups.id;
+
+
+--
+-- Name: auth_user_id_seq; Type: SEQUENCE; Schema: public; Owner: animkim
+--
+
+CREATE SEQUENCE auth_user_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE auth_user_id_seq OWNER TO animkim;
+
+--
+-- Name: auth_user_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: animkim
+--
+
+ALTER SEQUENCE auth_user_id_seq OWNED BY auth_user.id;
+
+
+--
+-- Name: auth_user_user_permissions; Type: TABLE; Schema: public; Owner: animkim; Tablespace: 
+--
+
+CREATE TABLE auth_user_user_permissions (
+    id integer NOT NULL,
+    user_id integer NOT NULL,
+    permission_id integer NOT NULL
+);
+
+
+ALTER TABLE auth_user_user_permissions OWNER TO animkim;
+
+--
+-- Name: auth_user_user_permissions_id_seq; Type: SEQUENCE; Schema: public; Owner: animkim
+--
+
+CREATE SEQUENCE auth_user_user_permissions_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE auth_user_user_permissions_id_seq OWNER TO animkim;
+
+--
+-- Name: auth_user_user_permissions_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: animkim
+--
+
+ALTER SEQUENCE auth_user_user_permissions_id_seq OWNED BY auth_user_user_permissions.id;
+
+
+--
+-- Name: blog_blogpost; Type: TABLE; Schema: public; Owner: animkim; Tablespace: 
+--
+
+CREATE TABLE blog_blogpost (
+    id integer NOT NULL,
+    title character varying(150) NOT NULL,
+    body text NOT NULL,
+    "timestamp" timestamp with time zone NOT NULL
+);
+
+
+ALTER TABLE blog_blogpost OWNER TO animkim;
+
+--
+-- Name: blog_blogpost_id_seq; Type: SEQUENCE; Schema: public; Owner: animkim
+--
+
+CREATE SEQUENCE blog_blogpost_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE blog_blogpost_id_seq OWNER TO animkim;
+
+--
+-- Name: blog_blogpost_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: animkim
+--
+
+ALTER SEQUENCE blog_blogpost_id_seq OWNED BY blog_blogpost.id;
+
+
+--
+-- Name: django_admin_log; Type: TABLE; Schema: public; Owner: animkim; Tablespace: 
+--
+
+CREATE TABLE django_admin_log (
+    id integer NOT NULL,
+    action_time timestamp with time zone NOT NULL,
+    user_id integer NOT NULL,
+    content_type_id integer,
+    object_id text,
+    object_repr character varying(200) NOT NULL,
+    action_flag smallint NOT NULL,
+    change_message text NOT NULL,
+    CONSTRAINT django_admin_log_action_flag_check CHECK ((action_flag >= 0))
+);
+
+
+ALTER TABLE django_admin_log OWNER TO animkim;
+
+--
+-- Name: django_admin_log_id_seq; Type: SEQUENCE; Schema: public; Owner: animkim
+--
+
+CREATE SEQUENCE django_admin_log_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE django_admin_log_id_seq OWNER TO animkim;
+
+--
+-- Name: django_admin_log_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: animkim
+--
+
+ALTER SEQUENCE django_admin_log_id_seq OWNED BY django_admin_log.id;
+
+
+--
+-- Name: django_content_type; Type: TABLE; Schema: public; Owner: animkim; Tablespace: 
+--
+
+CREATE TABLE django_content_type (
+    id integer NOT NULL,
+    name character varying(100) NOT NULL,
+    app_label character varying(100) NOT NULL,
+    model character varying(100) NOT NULL
+);
+
+
+ALTER TABLE django_content_type OWNER TO animkim;
+
+--
+-- Name: django_content_type_id_seq; Type: SEQUENCE; Schema: public; Owner: animkim
+--
+
+CREATE SEQUENCE django_content_type_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE django_content_type_id_seq OWNER TO animkim;
+
+--
+-- Name: django_content_type_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: animkim
+--
+
+ALTER SEQUENCE django_content_type_id_seq OWNED BY django_content_type.id;
+
+
+--
+-- Name: django_session; Type: TABLE; Schema: public; Owner: animkim; Tablespace: 
+--
+
+CREATE TABLE django_session (
+    session_key character varying(40) NOT NULL,
+    session_data text NOT NULL,
+    expire_date timestamp with time zone NOT NULL
+);
+
+
+ALTER TABLE django_session OWNER TO animkim;
+
+--
+-- Name: django_site; Type: TABLE; Schema: public; Owner: animkim; Tablespace: 
+--
+
+CREATE TABLE django_site (
+    id integer NOT NULL,
+    domain character varying(100) NOT NULL,
+    name character varying(50) NOT NULL
+);
+
+
+ALTER TABLE django_site OWNER TO animkim;
+
+--
+-- Name: django_site_id_seq; Type: SEQUENCE; Schema: public; Owner: animkim
+--
+
+CREATE SEQUENCE django_site_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE django_site_id_seq OWNER TO animkim;
+
+--
+-- Name: django_site_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: animkim
+--
+
+ALTER SEQUENCE django_site_id_seq OWNED BY django_site.id;
+
+
+--
+-- Name: store_category; Type: TABLE; Schema: public; Owner: animkim; Tablespace: 
+--
+
+CREATE TABLE store_category (
+    id integer NOT NULL,
+    parent_id integer,
+    title character varying(50) NOT NULL,
+    slug character varying(70) NOT NULL,
+    image character varying(100) NOT NULL
+);
+
+
+ALTER TABLE store_category OWNER TO animkim;
+
+--
+-- Name: store_category_id_seq; Type: SEQUENCE; Schema: public; Owner: animkim
+--
+
+CREATE SEQUENCE store_category_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE store_category_id_seq OWNER TO animkim;
+
+--
+-- Name: store_category_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: animkim
+--
+
+ALTER SEQUENCE store_category_id_seq OWNED BY store_category.id;
+
+
+--
+-- Name: store_product; Type: TABLE; Schema: public; Owner: animkim; Tablespace: 
+--
+
+CREATE TABLE store_product (
+    id integer NOT NULL,
+    category_id integer NOT NULL,
+    title character varying(50) NOT NULL,
+    slug character varying(70) NOT NULL,
+    image character varying(100) NOT NULL
+);
+
+
+ALTER TABLE store_product OWNER TO animkim;
+
+--
+-- Name: store_product_id_seq; Type: SEQUENCE; Schema: public; Owner: animkim
+--
+
+CREATE SEQUENCE store_product_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE store_product_id_seq OWNER TO animkim;
+
+--
+-- Name: store_product_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: animkim
+--
+
+ALTER SEQUENCE store_product_id_seq OWNED BY store_product.id;
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: animkim
+--
+
+ALTER TABLE ONLY auth_group ALTER COLUMN id SET DEFAULT nextval('auth_group_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: animkim
+--
+
+ALTER TABLE ONLY auth_group_permissions ALTER COLUMN id SET DEFAULT nextval('auth_group_permissions_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: animkim
+--
+
+ALTER TABLE ONLY auth_message ALTER COLUMN id SET DEFAULT nextval('auth_message_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: animkim
+--
+
+ALTER TABLE ONLY auth_permission ALTER COLUMN id SET DEFAULT nextval('auth_permission_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: animkim
+--
+
+ALTER TABLE ONLY auth_user ALTER COLUMN id SET DEFAULT nextval('auth_user_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: animkim
+--
+
+ALTER TABLE ONLY auth_user_groups ALTER COLUMN id SET DEFAULT nextval('auth_user_groups_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: animkim
+--
+
+ALTER TABLE ONLY auth_user_user_permissions ALTER COLUMN id SET DEFAULT nextval('auth_user_user_permissions_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: animkim
+--
+
+ALTER TABLE ONLY blog_blogpost ALTER COLUMN id SET DEFAULT nextval('blog_blogpost_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: animkim
+--
+
+ALTER TABLE ONLY django_admin_log ALTER COLUMN id SET DEFAULT nextval('django_admin_log_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: animkim
+--
+
+ALTER TABLE ONLY django_content_type ALTER COLUMN id SET DEFAULT nextval('django_content_type_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: animkim
+--
+
+ALTER TABLE ONLY django_site ALTER COLUMN id SET DEFAULT nextval('django_site_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: animkim
+--
+
+ALTER TABLE ONLY store_category ALTER COLUMN id SET DEFAULT nextval('store_category_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: animkim
+--
+
+ALTER TABLE ONLY store_product ALTER COLUMN id SET DEFAULT nextval('store_product_id_seq'::regclass);
+
+
+--
+-- Data for Name: auth_group; Type: TABLE DATA; Schema: public; Owner: animkim
+--
+
+COPY auth_group (id, name) FROM stdin;
+\.
+
+
+--
+-- Name: auth_group_id_seq; Type: SEQUENCE SET; Schema: public; Owner: animkim
+--
+
+SELECT pg_catalog.setval('auth_group_id_seq', 1, false);
+
+
+--
+-- Data for Name: auth_group_permissions; Type: TABLE DATA; Schema: public; Owner: animkim
+--
+
+COPY auth_group_permissions (id, group_id, permission_id) FROM stdin;
+\.
+
+
+--
+-- Name: auth_group_permissions_id_seq; Type: SEQUENCE SET; Schema: public; Owner: animkim
+--
+
+SELECT pg_catalog.setval('auth_group_permissions_id_seq', 1, false);
+
+
+--
+-- Data for Name: auth_message; Type: TABLE DATA; Schema: public; Owner: animkim
+--
+
+COPY auth_message (id, user_id, message) FROM stdin;
+\.
+
+
+--
+-- Name: auth_message_id_seq; Type: SEQUENCE SET; Schema: public; Owner: animkim
+--
+
+SELECT pg_catalog.setval('auth_message_id_seq', 1, false);
+
+
+--
+-- Data for Name: auth_permission; Type: TABLE DATA; Schema: public; Owner: animkim
+--
+
+COPY auth_permission (id, name, content_type_id, codename) FROM stdin;
+1	Can add permission	1	add_permission
+2	Can change permission	1	change_permission
+3	Can delete permission	1	delete_permission
+4	Can add group	2	add_group
+5	Can change group	2	change_group
+6	Can delete group	2	delete_group
+7	Can add user	3	add_user
+8	Can change user	3	change_user
+9	Can delete user	3	delete_user
+10	Can add message	4	add_message
+11	Can change message	4	change_message
+12	Can delete message	4	delete_message
+13	Can add content type	5	add_contenttype
+14	Can change content type	5	change_contenttype
+15	Can delete content type	5	delete_contenttype
+16	Can add session	6	add_session
+17	Can change session	6	change_session
+18	Can delete session	6	delete_session
+19	Can add site	7	add_site
+20	Can change site	7	change_site
+21	Can delete site	7	delete_site
+22	Can add log entry	8	add_logentry
+23	Can change log entry	8	change_logentry
+24	Can delete log entry	8	delete_logentry
+25	Can add blog post	9	add_blogpost
+26	Can change blog post	9	change_blogpost
+27	Can delete blog post	9	delete_blogpost
+28	Can add category	10	add_category
+29	Can change category	10	change_category
+30	Can delete category	10	delete_category
+31	Can add product	11	add_product
+32	Can change product	11	change_product
+33	Can delete product	11	delete_product
+\.
+
+
+--
+-- Name: auth_permission_id_seq; Type: SEQUENCE SET; Schema: public; Owner: animkim
+--
+
+SELECT pg_catalog.setval('auth_permission_id_seq', 33, true);
+
+
+--
+-- Data for Name: auth_user; Type: TABLE DATA; Schema: public; Owner: animkim
+--
+
+COPY auth_user (id, username, first_name, last_name, email, password, is_staff, is_active, is_superuser, last_login, date_joined) FROM stdin;
+1	admin			set_vlad@mail.ru	sha1$7d298$0240908cbe2780b0f0905cd30a1f1c34c254c9dc	t	t	t	2016-04-28 15:58:28.367739+07	2016-04-28 13:31:55.007087+07
+\.
+
+
+--
+-- Data for Name: auth_user_groups; Type: TABLE DATA; Schema: public; Owner: animkim
+--
+
+COPY auth_user_groups (id, user_id, group_id) FROM stdin;
+\.
+
+
+--
+-- Name: auth_user_groups_id_seq; Type: SEQUENCE SET; Schema: public; Owner: animkim
+--
+
+SELECT pg_catalog.setval('auth_user_groups_id_seq', 1, false);
+
+
+--
+-- Name: auth_user_id_seq; Type: SEQUENCE SET; Schema: public; Owner: animkim
+--
+
+SELECT pg_catalog.setval('auth_user_id_seq', 1, true);
+
+
+--
+-- Data for Name: auth_user_user_permissions; Type: TABLE DATA; Schema: public; Owner: animkim
+--
+
+COPY auth_user_user_permissions (id, user_id, permission_id) FROM stdin;
+\.
+
+
+--
+-- Name: auth_user_user_permissions_id_seq; Type: SEQUENCE SET; Schema: public; Owner: animkim
+--
+
+SELECT pg_catalog.setval('auth_user_user_permissions_id_seq', 1, false);
+
+
+--
+-- Data for Name: blog_blogpost; Type: TABLE DATA; Schema: public; Owner: animkim
+--
+
+COPY blog_blogpost (id, title, body, "timestamp") FROM stdin;
+1	DDDDDDDDD	Мы создадим проект состоящий из простого приложения для голосования.\r\n\r\nПроект будет состоять из двух частей:\r\n\r\n    Публичный сайт, который отображает пользователям голосования и позволяет им голосовать.\r\n\r\n    Интерфейс администратора, который позволяет вам добавлять, изменять и удалять голосования.\r\n	2016-04-28 15:59:10+07
+2	sssssssssssssssss	Мы создадим проект состоящий из простого приложения для голосования.\r\n\r\nПроект будет состоять из двух частей:\r\n\r\n    Публичный сайт, который отображает пользователям голосования и позволяет им голосовать.\r\n\r\n    Интерфейс администратора, который позволяет вам добавлять, изменять и удалять голосования.\r\nМы создадим проект состоящий из простого приложения для голосования.\r\n\r\nПроект будет состоять из двух частей:\r\n\r\n    Публичный сайт, который отображает пользователям голосования и позволяет им голосовать.\r\n\r\n    Интерфейс администратора, который позволяет вам добавлять, изменять и удалять голосования.\r\n	2016-04-28 15:59:49+07
+\.
+
+
+--
+-- Name: blog_blogpost_id_seq; Type: SEQUENCE SET; Schema: public; Owner: animkim
+--
+
+SELECT pg_catalog.setval('blog_blogpost_id_seq', 2, true);
+
+
+--
+-- Data for Name: django_admin_log; Type: TABLE DATA; Schema: public; Owner: animkim
+--
+
+COPY django_admin_log (id, action_time, user_id, content_type_id, object_id, object_repr, action_flag, change_message) FROM stdin;
+1	2016-04-28 15:59:26.54071+07	1	9	1	BlogPost object	1	
+2	2016-04-28 15:59:50.703126+07	1	9	2	BlogPost object	1	
+3	2016-04-29 16:18:44.037631+07	1	10	4	Category object	1	
+4	2016-04-29 16:23:50.116409+07	1	10	5	Category object	1	
+5	2016-04-29 16:31:52.757142+07	1	10	4	Category object	2	Изменен title.
+6	2016-04-29 16:36:02.920865+07	1	10	6	Наушники	1	
+7	2016-04-29 16:36:34.321313+07	1	10	7	Безпроводные	1	
+8	2016-04-29 16:37:59.755492+07	1	10	7	Безпроводные	3	
+9	2016-04-29 16:38:25.240958+07	1	10	8	Беспороводные	1	
+10	2016-04-29 16:39:11.563738+07	1	10	9	Проводные	1	
+11	2016-04-29 16:43:51.760779+07	1	11	1	Радиоприёмник Ritmix RPR-2061	1	
+12	2016-04-29 16:44:17.050844+07	1	11	2	Радиоприёмник Ritmix RPR-2060	1	
+13	2016-04-29 16:45:18.474645+07	1	10	8	Беспороводные	3	
+14	2016-04-29 16:45:45.009815+07	1	10	10	Беспроводные наушники	1	
+15	2016-04-29 16:46:10.731238+07	1	10	5	Видео техника	3	
+16	2016-04-29 16:46:20.385896+07	1	10	11	Видео техника	1	
+17	2016-04-29 16:46:32.132152+07	1	10	9	Проводные	3	
+18	2016-04-29 16:46:57.607314+07	1	10	12	Проводные наушники	1	
+19	2016-04-29 16:48:33.958372+07	1	11	3	Наушники DNS D-15BT	1	
+20	2016-04-29 16:48:52.301697+07	1	11	4	Наушники HIPER Sound Space	1	
+21	2016-04-29 16:49:37.186965+07	1	11	5	Наушники AUDIO-TECHNICA ATH-ANC9	1	
+22	2016-04-29 16:49:52.356542+07	1	11	6	Наушники Razer Tiamat 7.1	1	
+23	2016-05-04 13:52:38.704714+07	1	11	7	Что-то там	1	
+24	2016-05-04 14:08:43.296555+07	1	11	8	Наушники DNCSS	1	
+25	2016-05-05 11:24:33.719001+07	1	10	13	Фотоаппараты	1	
+26	2016-05-05 11:26:27.802565+07	1	10	14	Видеокамера	1	
+27	2016-05-05 11:27:12.76486+07	1	10	14	Видеокамера	2	Ни одно поле не изменено.
+28	2016-05-05 11:29:47.694877+07	1	10	15	Ноутбуки и планшеты	1	
+29	2016-05-05 11:32:59.137144+07	1	10	16	Планшеты фирмы Ace	1	
+30	2016-05-05 11:33:10.703639+07	1	10	4	Аудио техника	2	Изменен image.
+31	2016-05-05 11:33:55.870148+07	1	10	10	Беспроводные наушники	2	Изменен image.
+32	2016-05-05 11:34:09.636909+07	1	10	14	Видеокамера	2	Изменен image.
+33	2016-05-05 11:34:24.395345+07	1	10	11	Видео техника	2	Изменен image.
+34	2016-05-05 11:34:47.964247+07	1	10	6	Наушники	2	Изменен image.
+35	2016-05-05 11:34:54.713342+07	1	10	15	Ноутбуки и планшеты	2	Изменен image.
+36	2016-05-05 11:35:07.877276+07	1	10	16	Планшеты фирмы Ace	2	Изменен image.
+37	2016-05-05 11:35:21.443371+07	1	10	12	Проводные наушники	2	Изменен image.
+38	2016-05-05 11:35:32.683872+07	1	10	13	Фотоаппараты	2	Изменен image.
+39	2016-05-05 11:37:19.783543+07	1	11	9	Колонки Defender Hollywood 35	1	
+40	2016-05-05 11:37:35.597497+07	1	11	10	Колонки Defender Hollywood 35	1	
+41	2016-05-05 11:37:45.418234+07	1	11	10	Колонки Defender Hollywood 34	2	Изменен title.
+42	2016-05-05 11:37:53.83759+07	1	11	10	Колонки Defender Hollywood 34	2	Изменен slug.
+43	2016-05-05 11:38:11.225815+07	1	11	11	Колонки Defender Hollywood 33	1	
+44	2016-05-05 11:38:26.123529+07	1	11	12	Колонки Defender Hollywood 31	1	
+45	2016-05-05 11:38:48.251543+07	1	11	13	Колонки Defender Hollywood 22	1	
+46	2016-05-05 11:42:43.283032+07	1	11	14	Штатив DEXP WT-S02 серебристый	1	
+47	2016-05-05 11:43:10.104553+07	1	11	15	Штатив ERA ELT-0312 серебристый	1	
+48	2016-05-05 11:44:23.220897+07	1	11	16	Видеокамера Panasonic V760 черный	1	
+49	2016-05-05 11:44:38.781681+07	1	11	17	Видеокамера Panasonic V760 черный	1	
+50	2016-05-05 11:44:52.965852+07	1	11	18	Видеокамера Panasonic V760 черный	1	
+51	2016-05-05 11:45:43.125886+07	1	10	14	Видеокамеры	2	Изменен title и slug.
+52	2016-05-05 11:47:39.303434+07	1	10	17	Зеркальные фотоаппараты	1	
+53	2016-05-05 11:48:14.017071+07	1	10	18	Компактные фотоаппараты	1	
+54	2016-05-05 11:48:36.549361+07	1	11	19	Камера со сменной оптикой Samsung NX mini kit 9mm	1	
+55	2016-05-05 11:48:54.210934+07	1	11	20	Камера со сменной оптикой Samsung NX mini ki1t 9mm	1	
+56	2016-05-05 11:49:23.531072+07	1	11	21	Зеркальная камера Nikon D3200 Kit 18-55mm II черны	1	
+57	2016-05-05 11:49:34.114656+07	1	11	22	Зеркальная камера Nikon D3200 Kit 18-55mm II черны	1	
+58	2016-05-05 11:49:58.248634+07	1	11	23	Компактная камера Rekam iLook S750i серый	1	
+59	2016-05-05 11:50:17.329423+07	1	11	24	Компактная камера DEXP DC5100 черный	1	
+60	2016-05-05 11:50:35.578239+07	1	11	25	Компактная камера DEXP DC5	1	
+\.
+
+
+--
+-- Name: django_admin_log_id_seq; Type: SEQUENCE SET; Schema: public; Owner: animkim
+--
+
+SELECT pg_catalog.setval('django_admin_log_id_seq', 60, true);
+
+
+--
+-- Data for Name: django_content_type; Type: TABLE DATA; Schema: public; Owner: animkim
+--
+
+COPY django_content_type (id, name, app_label, model) FROM stdin;
+1	permission	auth	permission
+2	group	auth	group
+3	user	auth	user
+4	message	auth	message
+5	content type	contenttypes	contenttype
+6	session	sessions	session
+7	site	sites	site
+8	log entry	admin	logentry
+9	blog post	blog	blogpost
+10	category	store	category
+11	product	store	product
+\.
+
+
+--
+-- Name: django_content_type_id_seq; Type: SEQUENCE SET; Schema: public; Owner: animkim
+--
+
+SELECT pg_catalog.setval('django_content_type_id_seq', 11, true);
+
+
+--
+-- Data for Name: django_session; Type: TABLE DATA; Schema: public; Owner: animkim
+--
+
+COPY django_session (session_key, session_data, expire_date) FROM stdin;
+62079d66d11365f16ee9b4fc51344c1c	NWIzN2Y1YjA1YjYwMmVjMzJmY2UxNWFmOWNmZmU5YWMyN2E5MzRhYzqAAn1xAShVEl9hdXRoX3Vz\nZXJfYmFja2VuZHECVSlkamFuZ28uY29udHJpYi5hdXRoLmJhY2tlbmRzLk1vZGVsQmFja2VuZHED\nVQ1fYXV0aF91c2VyX2lkcQRLAXUu\n	2016-05-12 15:58:28.375738+07
+6b94772083fbe5a5fbe572b48a2a87a8	OGQ4Y2IwZDBiOWU1YzZjNWZiMDU1NDk5NDNhZTMzOGZlOGJmYmFiMTqAAn1xAVUKdGVzdGNvb2tp\nZXECVQZ3b3JrZWRxA3Mu\n	2016-05-18 17:22:00.286155+07
+\.
+
+
+--
+-- Data for Name: django_site; Type: TABLE DATA; Schema: public; Owner: animkim
+--
+
+COPY django_site (id, domain, name) FROM stdin;
+1	example.com	example.com
+\.
+
+
+--
+-- Name: django_site_id_seq; Type: SEQUENCE SET; Schema: public; Owner: animkim
+--
+
+SELECT pg_catalog.setval('django_site_id_seq', 1, true);
+
+
+--
+-- Data for Name: store_category; Type: TABLE DATA; Schema: public; Owner: animkim
+--
+
+COPY store_category (id, parent_id, title, slug, image) FROM stdin;
+4	\N	Аудио техника	audio	category_image/AudioEditor.gif
+10	6	Беспроводные наушники	besprovodnye-naushniki	category_image/AudioEditor_1.gif
+11	\N	Видео техника	video-tehnika	category_image/17417_1.jpg
+6	4	Наушники	naushniki	category_image/AudioEditor_2.gif
+15	\N	Ноутбуки и планшеты	noutbuki-i-planshety	category_image/8366_1.jpg
+16	15	Планшеты фирмы Ace	planshety-firmy-ace	category_image/8366_2.jpg
+12	6	Проводные наушники	provodnye-naushniki	category_image/AudioEditor_3.gif
+13	11	Фотоаппараты	fotoapparaty	category_image/17417_2.jpg
+14	11	Видеокамеры	videokamery	category_image/17417.jpg
+17	13	Зеркальные фотоаппараты	zerkalnye-fotoapparaty	category_image/44.jpg
+18	13	Компактные фотоаппараты	kompaktnye-fotoapparaty	category_image/77.jpg
+\.
+
+
+--
+-- Name: store_category_id_seq; Type: SEQUENCE SET; Schema: public; Owner: animkim
+--
+
+SELECT pg_catalog.setval('store_category_id_seq', 18, true);
+
+
+--
+-- Data for Name: store_product; Type: TABLE DATA; Schema: public; Owner: animkim
+--
+
+COPY store_product (id, category_id, title, slug, image) FROM stdin;
+1	4	Радиоприёмник Ritmix RPR-2061	radiopriyomnik-ritmix-rpr-2061	
+2	4	Радиоприёмник Ritmix RPR-2060	radiopriyomnik-ritmix-rpr-2060	
+3	10	Наушники DNS D-15BT	naushniki-dns-d-15bt	
+4	10	Наушники HIPER Sound Space	naushniki-hiper-sound-space	
+5	12	Наушники AUDIO-TECHNICA ATH-ANC9	naushniki-audio-technica-ath-anc9	
+6	12	Наушники Razer Tiamat 7.1	naushniki-razer-tiamat-71	
+7	11	Что-то там	chto-tam	
+8	6	Наушники DNCSS	naushniki-dncss	
+9	4	Колонки Defender Hollywood 35	kolonki-defender-hollywood-35	files/media/111.jpg
+10	4	Колонки Defender Hollywood 34	kolonki-defender-hollywood-34	
+11	4	Колонки Defender Hollywood 33	kolonki-defender-hollywood-33	
+12	4	Колонки Defender Hollywood 31	kolonki-defender-hollywood-31	
+13	4	Колонки Defender Hollywood 22	kolonki-defender-hollywood-22	
+14	11	Штатив DEXP WT-S02 серебристый	shtativ-dexp-wt-s02-serebristyj	files/media/7b04f0ab140ec473772fbd996c747b1ab5e0f63f8f42c76dd54c56abbb6d852a.jpg
+15	11	Штатив ERA ELT-0312 серебристый	shtativ-era-elt-0312-serebristyj	
+16	14	Видеокамера Panasonic V760 черный	videokamera-panasonic-v760-chernyj	files/media/3f7019ee588b026d13f8d55c6266c62a4ec280216ecd0dba3255257de7f4695e.jpg
+17	14	Видеокамера Panasonic V760 черный	videokamera-panasonic-v760-chernyj	
+18	14	Видеокамера Panasonic V760 черный	videokamera-panasonic-v760-chernyj	
+19	13	Камера со сменной оптикой Samsung NX mini kit 9mm	kamera-so-smennoj-optikoj-samsung-nx-mini-kit-9mm	
+20	13	Камера со сменной оптикой Samsung NX mini ki1t 9mm	kamera-so-smennoj-optikoj-samsung-nx-mini-ki1t-9mm	
+21	17	Зеркальная камера Nikon D3200 Kit 18-55mm II черны	zerkalnaya-kamera-nikon-d3200-kit-18-55mm-ii-cherny	
+22	17	Зеркальная камера Nikon D3200 Kit 18-55mm II черны	zerkalnaya-kamera-nikon-d3200-kit-18-55mm-ii-cherny	
+23	18	Компактная камера Rekam iLook S750i серый	kompaktnaya-kamera-rekam-ilook-s750i-seryj	
+24	18	Компактная камера DEXP DC5100 черный	kompaktnaya-kamera-dexp-dc5100-chernyj	
+25	18	Компактная камера DEXP DC5	kompaktnaya-kamera-dexp-dc5	
+\.
+
+
+--
+-- Name: store_product_id_seq; Type: SEQUENCE SET; Schema: public; Owner: animkim
+--
+
+SELECT pg_catalog.setval('store_product_id_seq', 25, true);
+
+
+--
+-- Name: auth_group_name_key; Type: CONSTRAINT; Schema: public; Owner: animkim; Tablespace: 
+--
+
+ALTER TABLE ONLY auth_group
+    ADD CONSTRAINT auth_group_name_key UNIQUE (name);
+
+
+--
+-- Name: auth_group_permissions_group_id_permission_id_key; Type: CONSTRAINT; Schema: public; Owner: animkim; Tablespace: 
+--
+
+ALTER TABLE ONLY auth_group_permissions
+    ADD CONSTRAINT auth_group_permissions_group_id_permission_id_key UNIQUE (group_id, permission_id);
+
+
+--
+-- Name: auth_group_permissions_pkey; Type: CONSTRAINT; Schema: public; Owner: animkim; Tablespace: 
+--
+
+ALTER TABLE ONLY auth_group_permissions
+    ADD CONSTRAINT auth_group_permissions_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: auth_group_pkey; Type: CONSTRAINT; Schema: public; Owner: animkim; Tablespace: 
+--
+
+ALTER TABLE ONLY auth_group
+    ADD CONSTRAINT auth_group_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: auth_message_pkey; Type: CONSTRAINT; Schema: public; Owner: animkim; Tablespace: 
+--
+
+ALTER TABLE ONLY auth_message
+    ADD CONSTRAINT auth_message_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: auth_permission_content_type_id_codename_key; Type: CONSTRAINT; Schema: public; Owner: animkim; Tablespace: 
+--
+
+ALTER TABLE ONLY auth_permission
+    ADD CONSTRAINT auth_permission_content_type_id_codename_key UNIQUE (content_type_id, codename);
+
+
+--
+-- Name: auth_permission_pkey; Type: CONSTRAINT; Schema: public; Owner: animkim; Tablespace: 
+--
+
+ALTER TABLE ONLY auth_permission
+    ADD CONSTRAINT auth_permission_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: auth_user_groups_pkey; Type: CONSTRAINT; Schema: public; Owner: animkim; Tablespace: 
+--
+
+ALTER TABLE ONLY auth_user_groups
+    ADD CONSTRAINT auth_user_groups_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: auth_user_groups_user_id_group_id_key; Type: CONSTRAINT; Schema: public; Owner: animkim; Tablespace: 
+--
+
+ALTER TABLE ONLY auth_user_groups
+    ADD CONSTRAINT auth_user_groups_user_id_group_id_key UNIQUE (user_id, group_id);
+
+
+--
+-- Name: auth_user_pkey; Type: CONSTRAINT; Schema: public; Owner: animkim; Tablespace: 
+--
+
+ALTER TABLE ONLY auth_user
+    ADD CONSTRAINT auth_user_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: auth_user_user_permissions_pkey; Type: CONSTRAINT; Schema: public; Owner: animkim; Tablespace: 
+--
+
+ALTER TABLE ONLY auth_user_user_permissions
+    ADD CONSTRAINT auth_user_user_permissions_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: auth_user_user_permissions_user_id_permission_id_key; Type: CONSTRAINT; Schema: public; Owner: animkim; Tablespace: 
+--
+
+ALTER TABLE ONLY auth_user_user_permissions
+    ADD CONSTRAINT auth_user_user_permissions_user_id_permission_id_key UNIQUE (user_id, permission_id);
+
+
+--
+-- Name: auth_user_username_key; Type: CONSTRAINT; Schema: public; Owner: animkim; Tablespace: 
+--
+
+ALTER TABLE ONLY auth_user
+    ADD CONSTRAINT auth_user_username_key UNIQUE (username);
+
+
+--
+-- Name: blog_blogpost_pkey; Type: CONSTRAINT; Schema: public; Owner: animkim; Tablespace: 
+--
+
+ALTER TABLE ONLY blog_blogpost
+    ADD CONSTRAINT blog_blogpost_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: django_admin_log_pkey; Type: CONSTRAINT; Schema: public; Owner: animkim; Tablespace: 
+--
+
+ALTER TABLE ONLY django_admin_log
+    ADD CONSTRAINT django_admin_log_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: django_content_type_app_label_model_key; Type: CONSTRAINT; Schema: public; Owner: animkim; Tablespace: 
+--
+
+ALTER TABLE ONLY django_content_type
+    ADD CONSTRAINT django_content_type_app_label_model_key UNIQUE (app_label, model);
+
+
+--
+-- Name: django_content_type_pkey; Type: CONSTRAINT; Schema: public; Owner: animkim; Tablespace: 
+--
+
+ALTER TABLE ONLY django_content_type
+    ADD CONSTRAINT django_content_type_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: django_session_pkey; Type: CONSTRAINT; Schema: public; Owner: animkim; Tablespace: 
+--
+
+ALTER TABLE ONLY django_session
+    ADD CONSTRAINT django_session_pkey PRIMARY KEY (session_key);
+
+
+--
+-- Name: django_site_pkey; Type: CONSTRAINT; Schema: public; Owner: animkim; Tablespace: 
+--
+
+ALTER TABLE ONLY django_site
+    ADD CONSTRAINT django_site_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: store_category_pkey; Type: CONSTRAINT; Schema: public; Owner: animkim; Tablespace: 
+--
+
+ALTER TABLE ONLY store_category
+    ADD CONSTRAINT store_category_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: store_product_pkey; Type: CONSTRAINT; Schema: public; Owner: animkim; Tablespace: 
+--
+
+ALTER TABLE ONLY store_product
+    ADD CONSTRAINT store_product_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: auth_group_permissions_group_id; Type: INDEX; Schema: public; Owner: animkim; Tablespace: 
+--
+
+CREATE INDEX auth_group_permissions_group_id ON auth_group_permissions USING btree (group_id);
+
+
+--
+-- Name: auth_group_permissions_permission_id; Type: INDEX; Schema: public; Owner: animkim; Tablespace: 
+--
+
+CREATE INDEX auth_group_permissions_permission_id ON auth_group_permissions USING btree (permission_id);
+
+
+--
+-- Name: auth_message_user_id; Type: INDEX; Schema: public; Owner: animkim; Tablespace: 
+--
+
+CREATE INDEX auth_message_user_id ON auth_message USING btree (user_id);
+
+
+--
+-- Name: auth_permission_content_type_id; Type: INDEX; Schema: public; Owner: animkim; Tablespace: 
+--
+
+CREATE INDEX auth_permission_content_type_id ON auth_permission USING btree (content_type_id);
+
+
+--
+-- Name: auth_user_groups_group_id; Type: INDEX; Schema: public; Owner: animkim; Tablespace: 
+--
+
+CREATE INDEX auth_user_groups_group_id ON auth_user_groups USING btree (group_id);
+
+
+--
+-- Name: auth_user_groups_user_id; Type: INDEX; Schema: public; Owner: animkim; Tablespace: 
+--
+
+CREATE INDEX auth_user_groups_user_id ON auth_user_groups USING btree (user_id);
+
+
+--
+-- Name: auth_user_user_permissions_permission_id; Type: INDEX; Schema: public; Owner: animkim; Tablespace: 
+--
+
+CREATE INDEX auth_user_user_permissions_permission_id ON auth_user_user_permissions USING btree (permission_id);
+
+
+--
+-- Name: auth_user_user_permissions_user_id; Type: INDEX; Schema: public; Owner: animkim; Tablespace: 
+--
+
+CREATE INDEX auth_user_user_permissions_user_id ON auth_user_user_permissions USING btree (user_id);
+
+
+--
+-- Name: django_admin_log_content_type_id; Type: INDEX; Schema: public; Owner: animkim; Tablespace: 
+--
+
+CREATE INDEX django_admin_log_content_type_id ON django_admin_log USING btree (content_type_id);
+
+
+--
+-- Name: django_admin_log_user_id; Type: INDEX; Schema: public; Owner: animkim; Tablespace: 
+--
+
+CREATE INDEX django_admin_log_user_id ON django_admin_log USING btree (user_id);
+
+
+--
+-- Name: django_session_expire_date; Type: INDEX; Schema: public; Owner: animkim; Tablespace: 
+--
+
+CREATE INDEX django_session_expire_date ON django_session USING btree (expire_date);
+
+
+--
+-- Name: store_category_parent_id; Type: INDEX; Schema: public; Owner: animkim; Tablespace: 
+--
+
+CREATE INDEX store_category_parent_id ON store_category USING btree (parent_id);
+
+
+--
+-- Name: store_category_slug; Type: INDEX; Schema: public; Owner: animkim; Tablespace: 
+--
+
+CREATE INDEX store_category_slug ON store_category USING btree (slug);
+
+
+--
+-- Name: store_category_slug_like; Type: INDEX; Schema: public; Owner: animkim; Tablespace: 
+--
+
+CREATE INDEX store_category_slug_like ON store_category USING btree (slug varchar_pattern_ops);
+
+
+--
+-- Name: store_product_category_id; Type: INDEX; Schema: public; Owner: animkim; Tablespace: 
+--
+
+CREATE INDEX store_product_category_id ON store_product USING btree (category_id);
+
+
+--
+-- Name: store_product_slug; Type: INDEX; Schema: public; Owner: animkim; Tablespace: 
+--
+
+CREATE INDEX store_product_slug ON store_product USING btree (slug);
+
+
+--
+-- Name: store_product_slug_like; Type: INDEX; Schema: public; Owner: animkim; Tablespace: 
+--
+
+CREATE INDEX store_product_slug_like ON store_product USING btree (slug varchar_pattern_ops);
+
+
+--
+-- Name: auth_group_permissions_permission_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: animkim
+--
+
+ALTER TABLE ONLY auth_group_permissions
+    ADD CONSTRAINT auth_group_permissions_permission_id_fkey FOREIGN KEY (permission_id) REFERENCES auth_permission(id) DEFERRABLE INITIALLY DEFERRED;
+
+
+--
+-- Name: auth_message_user_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: animkim
+--
+
+ALTER TABLE ONLY auth_message
+    ADD CONSTRAINT auth_message_user_id_fkey FOREIGN KEY (user_id) REFERENCES auth_user(id) DEFERRABLE INITIALLY DEFERRED;
+
+
+--
+-- Name: auth_user_groups_group_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: animkim
+--
+
+ALTER TABLE ONLY auth_user_groups
+    ADD CONSTRAINT auth_user_groups_group_id_fkey FOREIGN KEY (group_id) REFERENCES auth_group(id) DEFERRABLE INITIALLY DEFERRED;
+
+
+--
+-- Name: auth_user_user_permissions_permission_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: animkim
+--
+
+ALTER TABLE ONLY auth_user_user_permissions
+    ADD CONSTRAINT auth_user_user_permissions_permission_id_fkey FOREIGN KEY (permission_id) REFERENCES auth_permission(id) DEFERRABLE INITIALLY DEFERRED;
+
+
+--
+-- Name: content_type_id_refs_id_728de91f; Type: FK CONSTRAINT; Schema: public; Owner: animkim
+--
+
+ALTER TABLE ONLY auth_permission
+    ADD CONSTRAINT content_type_id_refs_id_728de91f FOREIGN KEY (content_type_id) REFERENCES django_content_type(id) DEFERRABLE INITIALLY DEFERRED;
+
+
+--
+-- Name: django_admin_log_content_type_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: animkim
+--
+
+ALTER TABLE ONLY django_admin_log
+    ADD CONSTRAINT django_admin_log_content_type_id_fkey FOREIGN KEY (content_type_id) REFERENCES django_content_type(id) DEFERRABLE INITIALLY DEFERRED;
+
+
+--
+-- Name: django_admin_log_user_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: animkim
+--
+
+ALTER TABLE ONLY django_admin_log
+    ADD CONSTRAINT django_admin_log_user_id_fkey FOREIGN KEY (user_id) REFERENCES auth_user(id) DEFERRABLE INITIALLY DEFERRED;
+
+
+--
+-- Name: group_id_refs_id_3cea63fe; Type: FK CONSTRAINT; Schema: public; Owner: animkim
+--
+
+ALTER TABLE ONLY auth_group_permissions
+    ADD CONSTRAINT group_id_refs_id_3cea63fe FOREIGN KEY (group_id) REFERENCES auth_group(id) DEFERRABLE INITIALLY DEFERRED;
+
+
+--
+-- Name: parent_id_refs_id_84db90ed; Type: FK CONSTRAINT; Schema: public; Owner: animkim
+--
+
+ALTER TABLE ONLY store_category
+    ADD CONSTRAINT parent_id_refs_id_84db90ed FOREIGN KEY (parent_id) REFERENCES store_category(id) DEFERRABLE INITIALLY DEFERRED;
+
+
+--
+-- Name: store_product_category_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: animkim
+--
+
+ALTER TABLE ONLY store_product
+    ADD CONSTRAINT store_product_category_id_fkey FOREIGN KEY (category_id) REFERENCES store_category(id) DEFERRABLE INITIALLY DEFERRED;
+
+
+--
+-- Name: user_id_refs_id_831107f1; Type: FK CONSTRAINT; Schema: public; Owner: animkim
+--
+
+ALTER TABLE ONLY auth_user_groups
+    ADD CONSTRAINT user_id_refs_id_831107f1 FOREIGN KEY (user_id) REFERENCES auth_user(id) DEFERRABLE INITIALLY DEFERRED;
+
+
+--
+-- Name: user_id_refs_id_f2045483; Type: FK CONSTRAINT; Schema: public; Owner: animkim
+--
+
+ALTER TABLE ONLY auth_user_user_permissions
+    ADD CONSTRAINT user_id_refs_id_f2045483 FOREIGN KEY (user_id) REFERENCES auth_user(id) DEFERRABLE INITIALLY DEFERRED;
+
+
+--
+-- Name: public; Type: ACL; Schema: -; Owner: postgres
+--
+
+REVOKE ALL ON SCHEMA public FROM PUBLIC;
+REVOKE ALL ON SCHEMA public FROM postgres;
+GRANT ALL ON SCHEMA public TO postgres;
+GRANT ALL ON SCHEMA public TO PUBLIC;
+
+
+--
+-- PostgreSQL database dump complete
+--
+
