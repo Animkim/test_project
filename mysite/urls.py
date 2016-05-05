@@ -1,5 +1,7 @@
 from django.conf.urls.defaults import *
-# Uncomment the next two lines to enable the admin:
+from django.conf.urls.static import static
+from django.contrib.staticfiles.urls import staticfiles_urlpatterns
+from django.conf import settings
 from django.contrib import admin
 admin.autodiscover()
 
@@ -8,3 +10,5 @@ urlpatterns = patterns('',
     url(r'^', include('store.urls')),
     url(r'^blog/', include('blog.urls')),
 )
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+urlpatterns += staticfiles_urlpatterns()
