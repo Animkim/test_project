@@ -36,7 +36,7 @@ class Product(models.Model):
         return self.title
 
     def get_absolute_url(self):
-        return '{}{}/{}'.format(self.category.get_absolute_url(), self.slug, self.id)
+        return '{}{}/{}/'.format(self.category.get_absolute_url(), self.slug, self.id)
 
 
 class CategoryAdmin(admin.ModelAdmin):
