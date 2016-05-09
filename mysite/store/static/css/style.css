@@ -13,9 +13,21 @@ table, caption, tbody, tfoot, thead, tr, th, td {
     border: 0 none;
 }
 
+body {
+    font-family: "PT Sans",Arial,sans-serif;
+    color: #000;
+}
+
 .wrapper {
     width: 960px;
     margin: 0 auto;
+}
+
+a {
+    text-decoration: none;
+    border-bottom: 1px solid;
+    border-color: rgba(22, 131, 198, 0.3);
+    color: #1683C6;
 }
 
 /* header */
@@ -28,26 +40,31 @@ header {
 
 /* search form */
 
-.search {
+.search-form {
     float: right;
-    width: 450px;
-    padding: 0 160px 0  0;
-
+    padding: 0 25px 0 350px ;
+    overflow: hidden;
 }
 
-.search-form {
-    overflow: hidden;
+.search {
+    float: right;
+    width: 400px;
+    padding-right: 25px;
+    border-radius: 5px;
+    border: 1px solid #D1D1D1;
 }
 
 .search-form span {
     display: inline-block;
+    padding-right: 5px;
+    padding-top: 4px;
     height: 25px;
-    padding: 3px 0 3px 190px;
 }
 
 .search input {
     width: 400px;
-    height: 15px;
+    border: 0px none;
+    padding-bottom: 2px;
 }
 
 /* bredcrumbs */
@@ -81,6 +98,7 @@ header {
 /* main */
 
 .container {
+    padding-top: 20px;
     overflow: hidden;
 }
 
@@ -95,12 +113,13 @@ header {
     margin: 0 0 5px 0;
 }
 
-.nav {
-    padding: 0 2px 0 10px;
+.catalog a:hover {
+    border-color: rgba(250, 128, 0, 0.5);
+    color: #FF8000;
 }
 
-.catalog a {
-    display: block;
+.nav {
+    padding: 0 2px 0 10px;
 }
 
 .sub {
@@ -116,20 +135,34 @@ header {
 }
 
 .item {
-    width: 24%;
-    height: 130px;
+    padding: 5px;
+    margin-bottom: 8px;
+    border: 1px solid transparent;
+    width: 25%;
+    box-sizing: border-box;
     float: left;
-    outline:1px solid black;
     vertical-align: bottom;
     text-align: center;
-    margin: 2px;
+    background-color: #FFFFFF;
+
 }
+
+.item a:hover {
+    border-color: rgba(250, 128, 0, 0.5);
+    color: #FF8000;
+}
+
+.item:hover {
+    border: 1px solid #D1D1D1;
+}
+
 .image {
-    padding: 1px;
+    height: 100px;
+    margin-bottom: 10px;
 }
 
 
 .pagination {
     float: right;
-    margin: 5px 0 0 0;
+    margin: 5px 10px 0 0;
 }

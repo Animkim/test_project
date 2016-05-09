@@ -19,11 +19,11 @@ class Category(models.Model):
         all_slug(self)
         return '/{}/'.format('/'.join(url[::-1]))
 
-    class Meta:
-        ordering = ('title',)
-
     def __unicode__(self):
         return self.title
+
+    class Meta:
+        ordering = ('title',)
 
 
 class Product(models.Model):
