@@ -14,14 +14,14 @@ def my_paginator(request, item_list, number_page):
     return items
 
 
-def my_breadcrums(object):
+def path_tree(object):
     categories = []
 
-    def breadcrums(category):
+    def pathfinding(category):
         categories.append(category)
         if category.parent:
-            breadcrums(category.parent)
-    breadcrums(object)
+            pathfinding(category.parent)
+    pathfinding(object)
     return categories[::-1]
 
 

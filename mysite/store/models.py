@@ -1,5 +1,7 @@
+# -*- coding: utf-8 -*-
 from django.db import models
 from django.contrib import admin
+from my_function import path_tree
 
 
 class Category(models.Model):
@@ -7,6 +9,11 @@ class Category(models.Model):
     title = models.CharField(max_length=50)
     slug = models.SlugField(max_length=70)
     image = models.ImageField(upload_to='category_image')
+
+    def save(self, *args, **kwargs):
+        if len(path_tree(self)) == 4:
+            raise ValueError(u'Достигнута максимальная вложенность!')
+        super(Category, self).save(*args, **kwargs)
 
     def get_absolute_url(self):
         url = []
