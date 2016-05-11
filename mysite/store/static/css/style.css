@@ -119,9 +119,11 @@ header {
     color: #FF8000;
 }
 
-.nav {
+#nav {
     padding: 0 2px 0 10px;
 }
+
+
 
 .sub {
     padding-left: 15px;
