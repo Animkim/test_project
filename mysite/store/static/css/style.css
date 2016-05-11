@@ -172,3 +172,8 @@ header {
     float: right;
     margin: 5px 10px 0 0;
 }
+
+.one_item {
+    width: 200px;
+    margin: 0 auto;
+}

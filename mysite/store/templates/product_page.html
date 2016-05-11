@@ -11,10 +11,13 @@
 {% endblock %}
 
 {% block content %}
-    {% if item.image %}
-        <img width="200" height="200" src="{{ item.image.url }}" alt="" />
-    {% else %}
-        <img width="200" height="200" src="{{ item.category.image.url }}" alt="" />
-    {% endif %}
-    {{ item.title }}
+    <div class="one_item">
+        {% if item.image %}
+            <img width="200" height="200" src="{{ item.image.url }}" alt="" />
+        {% else %}
+            <img width="200" height="200" src="{{ item.category.image.url }}" alt="" />
+        {% endif %}
+        <div class="item_title">
+            {{ item.title }}
+        </div>
 {% endblock %}

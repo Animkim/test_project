@@ -1,6 +1,6 @@
 from django.shortcuts import render_to_response, get_object_or_404
 from mysite.store.models import Category, Product
-from mysite.store.my_function import path_tree, my_paginator
+from mysite.store.tools import path_tree, my_paginator
 from django.http import Http404
 
 

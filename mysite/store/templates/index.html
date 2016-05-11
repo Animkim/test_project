@@ -12,14 +12,13 @@
 {% endblock %}
 
 {% block category %}
-    <ul class="nav">
-        {% for category in categories %}
-            {% include "category.html" %}
-            {% for category in category.children.all %}
+    <div class="catalog">
+        <ul class="nav">
+            {% for category in categories %}
                 {% include "category.html" %}
             {% endfor %}
-        {% endfor %}
-    </ul>
+        </ul>
+    </div>
 {% endblock %}
 
 {% block content %}

@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 from django.db import models
 from django.contrib import admin
-from my_function import path_tree
+from tools import path_tree
 
 
 class Category(models.Model):

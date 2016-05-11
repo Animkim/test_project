@@ -1,4 +1,12 @@
 <li><a href="{{ category.get_absolute_url }}">{{ category.title }}</a>
-    <ul class="sub"></ul>
+    <ul class="sub">
+        {% if category.children.all %}
+            {% for category in category.children.all %}
+                {% with template_name="category.html" %}
+                    {% include template_name %}
+                {% endwith %}
+            {% endfor %}
+        {% endif %}
+    </ul>
 </li>
 
