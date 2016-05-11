@@ -1,4 +1,4 @@
-<li><a href="{{ category.get_absolute_url }}">{{ category.title }}</a>
+<li><span><a href="{{ category.get_absolute_url }}">{{ category.title }}</a></span>
     <ul class="sub">
         {% if category.children.all %}
             {% for category in category.children.all %}
