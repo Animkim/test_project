@@ -5,8 +5,8 @@ urlpatterns = patterns('',
     url(r'^$', views.index),
     url(r'^search/$', views.search),
     url(r'/(?P<pk>[\d]+)/$', views.product_page),
-    url(r'^(?P<slug>[\w\-]+)/$', views.category),
-    url(r'^[\w\-]+/(?P<slug>[\w\-]+)/$', views.category),
-    url(r'^[\w\-]+/[\w\-]+/(?P<slug>[\w\-]+)/$', views.category),
+    url(r'^(?P<slug>[\w\-]+)/$', views.category, name='category'),
+    url(r'^[\w\-]+/(?P<slug>[\w\-]+)/$', views.category, name='category'),
+    url(r'^[\w\-]+/[\w\-]+/(?P<slug>[\w\-]+)/$', views.category, name='category'),
 )
 

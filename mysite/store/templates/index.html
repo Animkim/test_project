@@ -13,6 +13,7 @@
 
 {% block category %}
     <div class="catalog">
+    {{ category_id.title }}
         <ul id="nav" class="menu">
             {% for category in categories %}
                 {% include "category.html" %}

@@ -5,7 +5,7 @@
 <head lang="ru">
     <meta charset="UTF-8">
     <title>Электронный каталог</title>
-    <link rel="stylesheet" href="{{ STATIC_PREFIX }}css/style.css">
+    <link rel="stylesheet" href="{{ STATIC_PREFIX }}style.css">
 </head>
 <body>
     <div class="wrapper">
@@ -32,21 +32,5 @@
     </div>
 
 </body>
-<script>
-    var tree = document.getElementById('nav');
 
-    var treeBranch = tree.getElementsByTagName('span');
-
-    for (var i = 0; i < treeBranch.length; i++) {
-        var branch = treeBranch[i];
-        branch.onclick = doOpen();
-    }
-
-    function doOpen() {
-        alert()
-    }
-
-
-
-  </script>
 </html>

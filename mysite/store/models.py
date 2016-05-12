@@ -1,7 +1,9 @@
 # -*- coding: utf-8 -*-
 from django.db import models
 from django.contrib import admin
-from tools import path_tree
+from mysite.store.tools import path_to_root
+from django.db.models.signals import pre_save
+from django.dispatch import receiver
 
 
 class Category(models.Model):
@@ -11,8 +13,8 @@ class Category(models.Model):
     image = models.ImageField(upload_to='category_image')
 
     def save(self, *args, **kwargs):
-        if len(path_tree(self)) == 4:
-            raise ValueError(u'Достигнута максимальная вложенность!')
+        if len(path_to_root(self)) == 4:
+            return u'Достигнута максимальная вложенность!'
         super(Category, self).save(*args, **kwargs)
 
     def get_absolute_url(self):
@@ -48,7 +50,6 @@ class Product(models.Model):
 
 class CategoryAdmin(admin.ModelAdmin):
     list_display = ('title',)
-    prepopulated_fields = {'slug': ('title',)}
 
 
 class ProductAdmin(admin.ModelAdmin):
@@ -58,4 +59,10 @@ class ProductAdmin(admin.ModelAdmin):
 
 admin.site.register(Category, CategoryAdmin)
 admin.site.register(Product, ProductAdmin)
+
+
+@receiver(pre_save, sender=Category)
+def set_caregory_slug(sender, instance, *args, **kwargs):
+    from pytils import translit
+    instance.slug = translit.slugify(instance.title.strip())
 

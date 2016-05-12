@@ -1,0 +1,181 @@
+article, aside, details, figcaption, figure, footer,
+header, main, menu, nav, section, summary {
+  display: block;
+}
+
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6,
+p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn,
+em, font, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt,
+var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td {
+    margin: 0;
+    padding: 0;
+    border: 0 none;
+}
+
+body {
+    font-family: "PT Sans",Arial,sans-serif;
+    color: #000;
+}
+
+.wrapper {
+    width: 960px;
+    margin: 0 auto;
+}
+
+a {
+    text-decoration: none;
+    border-bottom: 1px solid;
+    border-color: rgba(22, 131, 198, 0.3);
+    color: #1683C6;
+}
+
+/* header */
+
+header {
+    text-align:  center;
+    margin-top: 100px;
+    margin-bottom: 15px;
+}
+
+/* search form */
+
+.search-form {
+    float: right;
+    padding: 0 25px 0 350px ;
+    overflow: hidden;
+}
+
+.search {
+    float: right;
+    width: 400px;
+    padding-right: 25px;
+    border-radius: 5px;
+    border: 1px solid #D1D1D1;
+}
+
+.search-form span {
+    display: inline-block;
+    padding-right: 5px;
+    padding-top: 4px;
+    height: 25px;
+}
+
+.search input {
+    width: 400px;
+    border: 0 none;
+    padding-bottom: 2px;
+}
+
+/* breadcrumbs */
+
+.breadcrumbs{
+    display: inline-block;
+    height: 30px;
+    padding: 5px;
+}
+
+.breadcrumbs ul {
+    padding-left: 15px;
+    float: left;
+}
+
+.breadcrumbs li {
+    padding-left: 15px;
+    float: left;
+}
+
+.breadcrumbs span {
+    float: left;
+}
+
+.marker {
+    list-style: none;
+}
+.marker > li:before {
+    content: '/  ';
+}
+
+/* main */
+
+.container {
+    padding-top: 20px;
+    overflow: hidden;
+}
+
+.catalog {
+    float: left;
+    width: 28%;
+
+}
+
+.catalog li {
+    list-style-type: none;
+    margin: 0 0 5px 0;
+}
+
+.catalog a:hover {
+    border-color: rgba(250, 128, 0, 0.5);
+    color: #FF8000;
+}
+
+#nav {
+    padding: 0 2px 0 10px;
+}
+
+
+
+.sub {
+    padding-left: 15px;
+    padding-top: 5px;
+}
+
+.content {
+    float: right;
+    padding: 1px 0 1px 0;
+    width: 70%;
+    font-size: 14px;
+}
+
+.item {
+    padding: 5px;
+    margin-bottom: 8px;
+    border: 1px solid transparent;
+    width: 25%;
+    box-sizing: border-box;
+    float: left;
+    vertical-align: bottom;
+    text-align: center;
+    background-color: #FFFFFF;
+
+}
+
+.item a:hover {
+    border-color: rgba(250, 128, 0, 0.5);
+    color: #FF8000;
+}
+
+.item:hover {
+    border: 1px solid #D1D1D1;
+}
+
+.image {
+    height: 100px;
+    margin-bottom: 10px;
+}
+
+.title {
+    padding: 5px 5px 5px 5px;
+    height: 50px;
+}
+
+
+.pagination {
+    float: right;
+    margin: 5px 10px 0 0;
+}
+
+.one_item {
+    width: 200px;
+    margin: 0 auto;
+}
