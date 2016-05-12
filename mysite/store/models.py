@@ -18,13 +18,8 @@ class Category(models.Model):
 
     def get_absolute_url(self):
         url = []
-       
-        def all_slug(query):
-            url.append(query.slug)
-            if query.parent:
-                return all_slug(query.parent)
-
-        all_slug(self)
+        path_slugs = lambda query: (query and url.append(query.slug) or (query.parent and path_slugs(query.parent)))
+        path_slugs(self)
         return '/{}/'.format('/'.join(url[::-1]))
 
     def __unicode__(self):
