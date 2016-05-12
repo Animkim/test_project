@@ -3,13 +3,12 @@ from django.db import models
 from django.contrib import admin
 from mysite.store.tools import path_to_root
 from django.db.models.signals import pre_save
-from django.dispatch import receiver
 
 
 class Category(models.Model):
     parent = models.ForeignKey('self', null=True, blank=True, related_name='children')
     title = models.CharField(max_length=50)
-    slug = models.SlugField(max_length=70)
+    slug = models.SlugField(max_length=70, blank=True)
     image = models.ImageField(upload_to='category_image')
 
     def save(self, *args, **kwargs):
@@ -19,7 +18,7 @@ class Category(models.Model):
 
     def get_absolute_url(self):
         url = []
-
+       
         def all_slug(query):
             url.append(query.slug)
             if query.parent:
@@ -61,8 +60,9 @@ admin.site.register(Category, CategoryAdmin)
 admin.site.register(Product, ProductAdmin)
 
 
-@receiver(pre_save, sender=Category)
 def set_caregory_slug(sender, instance, *args, **kwargs):
     from pytils import translit
     instance.slug = translit.slugify(instance.title.strip())
 
+
+pre_save.connect(set_caregory_slug, sender=Category)
