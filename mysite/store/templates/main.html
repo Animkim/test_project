@@ -25,11 +25,7 @@
 {% block content %}
     {% for item in items.object_list %}
         <div class="item">
-            {% if item.image %}
-                <div class="image"><a href="{{ item.get_absolute_url }}"><img width="130" height="110" src="{{ item.image.url }}" alt="" /></a></div>
-            {% else %}
-                <div class="image"><a href="{{ item.get_absolute_url }}"><img width="130" height="110" src="{{ item.category.image.url }}" alt=""/></a></div>
-            {% endif %}
+                <div class="image"><a href="{{ item.get_absolute_url }}"><img width="130" height="110" src="{{ media }}{{ item.image|default:item.category.image }}" alt="" /></a></div>
             <div class="title"><a href="{{ item.get_absolute_url }}">{{ item.title }}</a></div>
         </div>
     {% endfor %}
@@ -39,21 +35,13 @@
 <div class="pagination">
     <span class="step-links">
         {% if items.has_previous %}
-            {% if q %}
-                <a href="?q={{ q }}&page={{ items.previous_page_number }}">Назад</a>
-            {% else %}
-                <a href="?page={{ items.previous_page_number }}">Назад</a>
-            {% endif %}
+                <a href="?{{ q }}&page={{ items.previous_page_number }}">Назад</a>
         {% endif %}
         <span class="current">
             Страница {{ items.number }} из {{ items.paginator.num_pages }}.
         </span>
         {% if items.has_next %}
-            {% if q %}
-                <a href="?q={{ q }}&page={{ items.next_page_number }}">Вперед</a>
-            {% else %}
-                <a href="?page={{ items.next_page_number }}">Вперед</a>
-            {% endif %}
+                <a href="?{{ q }}&page={{ items.next_page_number }}">Вперед</a>
         {% endif %}
     </span>
 </div>
