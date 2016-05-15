@@ -1,6 +1,6 @@
 import os
 
-_PATH = os.path.abspath(os.path.dirname(__file__))
+PATH = os.path.abspath(os.path.dirname(__file__))
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
@@ -47,7 +47,7 @@ USE_L10N = True
 
 # Absolute filesystem path to the directory that will hold user-uploaded files.
 # Example: "/home/media/media.lawrence.com/media/"
-MEDIA_ROOT = os.path.join(_PATH, 'files', 'media')
+MEDIA_ROOT = os.path.join(PATH, 'files', 'media')
 
 # URL that handles the media served from MEDIA_ROOT. Make sure to use a
 # trailing slash.
@@ -58,7 +58,7 @@ MEDIA_URL = '/media/'
 # Don't put anything in this directory yourself; store your static files
 # in apps' "static/" subdirectories and in STATICFILES_DIRS.
 # Example: "/home/media/media.lawrence.com/static/"
-STATIC_ROOT = os.path.join(_PATH, 'files', 'static')
+STATIC_ROOT = os.path.join(PATH, 'files', 'static')
 
 # URL prefix for static files.
 # Example: "http://media.lawrence.com/static/"
@@ -102,7 +102,7 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.messages.middleware.MessageMiddleware',
 )
 
-ROOT_URLCONF = 'mysite.urls'
+ROOT_URLCONF = 'urls'
 
 TEMPLATE_DIRS = (
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
@@ -118,13 +118,21 @@ INSTALLED_APPS = (
     'django.contrib.sites',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'mysite.blog',
-    'mysite.store',
+    'store',
 
     # Uncomment the next line to enable the admin:
 
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
+)
+
+TEMPLATE_CONTEXT_PROCESSORS = (
+    'django.core.context_processors.auth',
+    'django.core.context_processors.debug',
+    'django.core.context_processors.i18n',
+    'django.core.context_processors.media',
+    'store.context_processors.category_list',
+    'store.context_processors.media'
 )
 
 # A sample logging configuration. The only tangible logging
