@@ -2,7 +2,7 @@
 from django.db import models
 from django.contrib import admin
 from store.tools import path_to_root
-from django.db.models.signals import post_save, pre_save
+from django.db.models.signals import post_save
 from django.contrib import messages
 
 
@@ -58,17 +58,19 @@ admin.site.register(Category, CategoryAdmin)
 admin.site.register(Product, ProductAdmin)
 
 
-def set_caregory_slug(sender, instance, *args, **kwargs):
+def set_category_slug(sender, instance, *args, **kwargs):
     from pytils import translit
-    instance.slug = translit.slugify(instance.title.strip())
-pre_save.connect(set_caregory_slug, sender=Category)
+    slug = translit.slugify(instance.title.strip())
+    if instance.slug != slug:
+        instance.slug = slug
+        instance.save()
+post_save.connect(set_category_slug, sender=Category)
 
 
 def set_product_slug(sender, instance, *args, **kwargs):
     from pytils import translit
-    if not instance.slug:
-        slug = translit.slugify(instance.title.strip())
-        pk = instance.pk
-        instance.slug = '{}_{}'.format(slug, pk)
+    slug = '{}_{}'.format(translit.slugify(instance.title.strip()), instance.pk)
+    if instance.slug != slug:
+        instance.slug = slug
         instance.save()
 post_save.connect(set_product_slug, sender=Product)
