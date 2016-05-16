@@ -31,7 +31,7 @@ def category(request, slug):
 def search(request):
     query = request.GET.get('q')
     items = None
-    if 'q' in request.GET and query:
+    if query:
         items = Product.objects.filter(title__icontains=query)
         items = page_paginator(request, items, 12)
         query = u'{}{}'.format('q=', query)
