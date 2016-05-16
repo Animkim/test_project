@@ -16,10 +16,9 @@ class Category(models.Model):
     image = models.ImageField(upload_to='category_image')
 
     def get_absolute_url(self):
-        if self.parent:
-            return '{}{}/'.format(self.parent.get_absolute_url(), self.slug)
-        else:
+        if not self.parent:
             return '/{}/'.format(self.slug)
+        return '{}{}/'.format(self.parent.get_absolute_url(), self.slug)
 
     def __unicode__(self):
         return self.title
