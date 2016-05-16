@@ -35,8 +35,12 @@ def search(request):
         items = Product.objects.filter(title__icontains=query)
         items = page_paginator(request, items, 12)
         query = u'{}{}'.format('q=', query)
-    return render_to_response('main.html', {'items': items, 'query': query},
-                              context_instance=RequestContext(request))
+        
+    context = {
+        'items': items,
+        'query': query
+    }
+    return render_to_response('main.html', context, context_instance=RequestContext(request))
 
 
 def product_page(request, slug):
