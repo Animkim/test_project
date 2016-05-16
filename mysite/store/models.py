@@ -2,6 +2,8 @@
 from django.db import models
 from django.contrib import admin
 from django.db.models.signals import post_save
+from django.core.exceptions import ValidationError
+#
 from store.admin import CategoryAdmin, ProductAdmin
 from store.signals import set_category_slug, set_product_slug
 from store.tools import path_to_root
@@ -23,7 +25,6 @@ class Category(models.Model):
         return self.title
 
     def clean(self):
-        from django.core.exceptions import ValidationError
         if len(path_to_root(self)) == 4:
             raise ValidationError(u'Достигнута максимальная вложенность!')
 

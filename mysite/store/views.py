@@ -10,7 +10,7 @@ from store.tools import path_to_root, page_paginator
 def index(request):
     items = Product.objects.all()
     context = {
-        'items': page_paginator(request, items, 12)
+        'items': page_paginator(request, items, 12),
     }
     return render_to_response('main.html', context, context_instance=RequestContext(request))
 
@@ -20,7 +20,7 @@ def category(request, slug):
     items = Product.objects.filter(category=requested_category)
     context = {
         'items': page_paginator(request, items, 12),
-        'breadcrumbs': path_to_root(requested_category)
+        'breadcrumbs': path_to_root(requested_category),
     }
     if request.path == requested_category.get_absolute_url():
         return render_to_response('main.html', context, context_instance=RequestContext(request))
@@ -35,10 +35,10 @@ def search(request):
         items = Product.objects.filter(title__icontains=query)
         items = page_paginator(request, items, 12)
         query = u'{}{}'.format('q=', query)
-        
+
     context = {
         'items': items,
-        'query': query
+        'query': query,
     }
     return render_to_response('main.html', context, context_instance=RequestContext(request))
 
@@ -48,7 +48,7 @@ def product_page(request, slug):
     category_item = Category.objects.get(slug=item.category.slug)
     context = {
         'item': item,
-        'breadcrumbs': path_to_root(category_item)
+        'breadcrumbs': path_to_root(category_item),
     }
     if request.path == item.get_absolute_url():
         return render_to_response('product_page.html', context)

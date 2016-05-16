@@ -25,12 +25,16 @@
 
 {% block content %}
     <div class="content">
-        {% for item in items.object_list %}
-            <div class="item">
-                <div class="image"><a href="{{ item.get_absolute_url }}"><img width="130" height="110" src="{% get_media_prefix %}{{ item.image|default:item.category.image }}" alt="" /></a></div>
-                <div class="title"><a href="{{ item.get_absolute_url }}">{{ item.title }}</a></div>
-            </div>
-        {% endfor %}
+        {% if not items %}
+            <div><p>Нечего не найдено</p></div>
+        {% else %}
+            {% for item in items.object_list %}
+                <div class="item">
+                    <div class="image"><a href="{{ item.get_absolute_url }}"><img width="130" height="110" src="{% get_media_prefix %}{{ item.image|default:item.category.image }}" alt="" /></a></div>
+                    <div class="title"><a href="{{ item.get_absolute_url }}">{{ item.title }}</a></div>
+                </div>
+            {% endfor %}
+        {% endif %}
     </div>
 {% endblock %}
 
