@@ -9,9 +9,8 @@ from store.tools import path_to_root, page_paginator
 
 def index(request):
     items = Product.objects.all()
-    items_paginator = page_paginator(request, items, 12)
     context = {
-        'items': items_paginator
+        'items': page_paginator(request, items, 12)
     }
     return render_to_response('main.html', context, context_instance=RequestContext(request))
 
