@@ -1,36 +1,34 @@
 {% load static %}
-{% get_static_prefix as STATIC_PREFIX %}
+
 <!DOCTYPE html>
 <html>
 <head lang="ru">
     <meta charset="UTF-8">
     <title>Электронный каталог</title>
-    <link rel="stylesheet" href="{{ STATIC_PREFIX }}css/style.css">
+    <link rel="stylesheet" href="{% get_static_prefix %}css/style.css">
 </head>
 <body>
     <div class="wrapper">
-        <header><h2><a href="/">Электронный каталог</a></h2></header>
+        <header>
+            <h2><a href="/">Электронный каталог</a></h2>
+        </header>
         <div class="search-form">
             <span>Строка поиска:</span>
              <form action="/search/" method="get" class="search">
                  <input type="text" name="q">
             </form>
         </div>
-        {% block breadcrumbs %}{% endblock %}
+        {% block breadcrumbs %}
+        {% endblock %}
 
         <div class="container" >
                 {% block category %}
                 {% endblock %}
-
-            <div class="content">
                 {% block content %}
                 {% endblock %}
-            </div>
         </div>
         {% block pagination %}
         {% endblock %}
     </div>
-
 </body>
-
 </html>

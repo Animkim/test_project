@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 from django.db import models
 from django.contrib import admin
-from store.tools import path_to_root
 from django.db.models.signals import post_save
-from django.contrib import messages
+from store.admin import CategoryAdmin, ProductAdmin
+from store.signals import set_category_slug, set_product_slug
 
 
 class Category(models.Model):
@@ -14,7 +14,7 @@ class Category(models.Model):
 
     def get_absolute_url(self):
         if self.parent:
-            return '{}'.format(self.parent.get_absolute_url()) + '{}/'.format(self.slug)
+            return '{}{}/'.format(self.parent.get_absolute_url(), self.slug)
         else:
             return '/{}/'.format(self.slug)
 
@@ -35,42 +35,12 @@ class Product(models.Model):
         return self.title
 
     def get_absolute_url(self):
-        return '{}{}/'.format(self.category.get_absolute_url(), self.slug)
-
-
-class CategoryAdmin(admin.ModelAdmin):
-    list_display = ('title',)
-    fields = ('title', 'parent', 'image')
-
-    def save_model(self, request, obj, form, change):
-        if len(path_to_root(obj)) == 4:
-            messages.error(request, u'Достигнута максимальная вложенность!')
-        else:
-            return super(CategoryAdmin, self).save_model(request, obj, form, change)
-
-
-class ProductAdmin(admin.ModelAdmin):
-    list_display = ('title',)
-    fields = ('title', 'category', 'image')
+        return '{}product/{}/'.format(self.category.get_absolute_url(), self.slug)
 
 
 admin.site.register(Category, CategoryAdmin)
 admin.site.register(Product, ProductAdmin)
 
 
-def set_category_slug(sender, instance, *args, **kwargs):
-    from pytils import translit
-    slug = translit.slugify(instance.title.strip())
-    if instance.slug != slug:
-        instance.slug = slug
-        instance.save()
 post_save.connect(set_category_slug, sender=Category)
-
-
-def set_product_slug(sender, instance, *args, **kwargs):
-    from pytils import translit
-    slug = '{}_{}'.format(translit.slugify(instance.title.strip()), instance.pk)
-    if instance.slug != slug:
-        instance.slug = slug
-        instance.save()
 post_save.connect(set_product_slug, sender=Product)
