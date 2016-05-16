@@ -16,12 +16,10 @@ def index(request):
 
 
 def category(request, slug):
-    slug = slug.split('/')[-1]
-    requested_category = get_object_or_404(Category, slug=slug)
+    requested_category = get_object_or_404(Category, slug=slug.split('/')[-1])
     items = Product.objects.filter(category=requested_category)
-    items_paginator = page_paginator(request, items, 12)
     context = {
-        'items': items_paginator,
+        'items': page_paginator(request, items, 12),
         'breadcrumbs': path_to_root(requested_category)
     }
     if request.path == requested_category.get_absolute_url():
