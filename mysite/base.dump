@@ -693,7 +693,7 @@ SELECT pg_catalog.setval('auth_permission_id_seq', 33, true);
 --
 
 COPY auth_user (id, username, first_name, last_name, email, password, is_staff, is_active, is_superuser, last_login, date_joined) FROM stdin;
-1	admin			set_vlad@mail.ru	sha1$7d298$0240908cbe2780b0f0905cd30a1f1c34c254c9dc	t	t	t	2016-04-28 15:58:28.367739+07	2016-04-28 13:31:55.007087+07
+1	admin			set_vlad@mail.ru	sha1$7d298$0240908cbe2780b0f0905cd30a1f1c34c254c9dc	t	t	t	2016-05-10 09:52:15.048615+07	2016-04-28 13:31:55.007087+07
 \.
 
 
@@ -816,6 +816,124 @@ COPY django_admin_log (id, action_time, user_id, content_type_id, object_id, obj
 58	2016-05-05 11:49:58.248634+07	1	11	23	Компактная камера Rekam iLook S750i серый	1	
 59	2016-05-05 11:50:17.329423+07	1	11	24	Компактная камера DEXP DC5100 черный	1	
 60	2016-05-05 11:50:35.578239+07	1	11	25	Компактная камера DEXP DC5	1	
+61	2016-05-06 10:26:46.712119+07	1	11	26	Наушники Razer Tiamat 7.1	1	
+62	2016-05-06 10:26:58.499521+07	1	11	27	Наушники Razer Tiamat 7.1	1	
+63	2016-05-06 10:27:08.813948+07	1	11	28	Наушники Razer Tiamat 7.1	1	
+64	2016-05-06 10:27:14.710177+07	1	11	29	Наушники Razer Tiamat 7.1	1	
+65	2016-05-06 10:27:27.550296+07	1	11	30	Наушники Razer Tiamat 7.1	1	
+66	2016-05-06 10:27:38.310437+07	1	11	31	Наушники Razer Tiamat 7.1	1	
+67	2016-05-06 10:27:49.859827+07	1	11	32	Наушники Razer Tiamat11	1	
+68	2016-05-06 10:28:04.612115+07	1	11	33	Наушники Razer Tiamat 7.111	1	
+69	2016-05-06 10:28:17.346486+07	1	11	34	Наушники Razer Tiamat 7.1	1	
+70	2016-05-10 09:53:15.836376+07	1	10	19	Суперзеркальные	1	
+71	2016-05-10 10:03:42.046244+07	1	10	19	Суперзеркальные	3	
+72	2016-05-10 10:05:43.933266+07	1	10	20	Суперзеркальные	1	
+73	2016-05-10 10:05:54.514382+07	1	10	20	Суперзеркальные	3	
+74	2016-05-10 10:06:23.026406+07	1	10	21	Суперзеркальные	1	
+75	2016-05-10 10:06:31.24301+07	1	10	21	Суперзеркальные	3	
+76	2016-05-10 10:07:01.968804+07	1	10	22	Суперзеркальные	1	
+77	2016-05-10 10:07:17.39013+07	1	10	22	Суперзеркальные	3	
+78	2016-05-12 11:41:23.754343+07	1	10	None	Утюги	1	
+79	2016-05-13 08:28:32.722462+07	1	10	23	Планшеты большие	1	
+80	2016-05-13 09:51:30.602916+07	1	10	23	Планшеты большие	2	Ни одно поле не изменено.
+81	2016-05-13 10:41:10.52007+07	1	10	None	Суперзеркальные	1	
+82	2016-05-13 11:10:28.781735+07	1	11	37	Видеокамера экшн GoPro Hero+ 	1	
+83	2016-05-13 11:13:11.842399+07	1	11	1	Радиоприёмник Ritmix RPR-2061	2	Ни одно поле не изменено.
+84	2016-05-13 11:20:29.224917+07	1	11	37	Видеокамера экшн GoPro Hero+ 	2	Ни одно поле не изменено.
+85	2016-05-13 11:21:11.516503+07	1	11	37	Видеокамера экшн GoPro Hero+ 	2	Ни одно поле не изменено.
+86	2016-05-13 11:21:54.329921+07	1	11	38	Видеокамера экшн GoPro Hero2+ 	1	
+87	2016-05-13 11:33:30.501608+07	1	11	39	Видеокамера экшн GoPro Hero3+ 	1	
+88	2016-05-13 11:34:19.883062+07	1	11	1	Радиоприёмник Ritmix RPR-2061	3	
+89	2016-05-13 11:34:26.514705+07	1	11	40	Радиоприёмник Ritmix RPR-2061	1	
+90	2016-05-13 11:34:40.61673+07	1	11	2	Радиоприёмник Ritmix RPR-2060	3	
+91	2016-05-13 11:34:44.981744+07	1	11	41	Радиоприёмник Ritmix RPR-2060	1	
+92	2016-05-13 11:34:52.404156+07	1	11	3	Наушники DNS D-15BT	3	
+93	2016-05-13 11:35:00.071861+07	1	11	42	Наушники DNS D-15BT	1	
+94	2016-05-13 11:35:12.957067+07	1	11	4	Наушники HIPER Sound Space	3	
+95	2016-05-13 11:35:17.904379+07	1	11	43	Наушники HIPER Sound Space	1	
+96	2016-05-13 11:42:37.738749+07	1	11	5	Наушники AUDIO-TECHNICA ATH-ANC9	3	
+97	2016-05-13 11:42:44.896729+07	1	11	44	Наушники AUDIO-TECHNICA ATH-ANC9	1	
+98	2016-05-13 11:42:50.322195+07	1	11	6	Наушники Razer Tiamat 7.1	2	Ни одно поле не изменено.
+99	2016-05-13 11:42:55.348697+07	1	11	45	Наушники Razer Tiamat 7.1	1	
+100	2016-05-13 11:43:03.561245+07	1	11	6	Наушники Razer Tiamat 7.1	3	
+101	2016-05-13 11:43:09.51325+07	1	11	46	Наушники Razer Tiamat 7.1	1	
+102	2016-05-13 11:43:18.001992+07	1	11	7	Что-то там	3	
+103	2016-05-13 11:43:33.393588+07	1	11	8	Наушники DNCSS	3	
+104	2016-05-13 11:43:39.524648+07	1	11	47	Наушники DNCSS	1	
+105	2016-05-13 11:45:39.251234+07	1	11	12	Колонки Defender Hollywood 31	3	
+106	2016-05-13 11:45:39.258912+07	1	11	11	Колонки Defender Hollywood 33	3	
+107	2016-05-13 11:45:39.262812+07	1	11	10	Колонки Defender Hollywood 34	3	
+108	2016-05-13 11:45:39.266316+07	1	11	9	Колонки Defender Hollywood 35	3	
+109	2016-05-13 11:45:45.541518+07	1	11	13	Колонки Defender Hollywood 22	3	
+110	2016-05-13 11:45:55.516346+07	1	11	48	Колонки Defender Hollywood 22	1	
+111	2016-05-13 11:46:03.813583+07	1	11	14	Штатив DEXP WT-S02 серебристый	3	
+112	2016-05-13 11:46:15.150151+07	1	11	49	Штатив DEXP WT-S02 серебристый	1	
+113	2016-05-13 11:46:21.319072+07	1	11	15	Штатив ERA ELT-0312 серебристый	3	
+114	2016-05-13 11:46:28.455701+07	1	11	50	Штатив ERA ELT-0312 серебристый	1	
+115	2016-05-13 11:46:37.063007+07	1	11	16	Видеокамера Panasonic V760 черный	3	
+116	2016-05-13 11:46:44.094681+07	1	11	51	Видеокамера Panasonic V760 черный	1	
+117	2016-05-13 11:46:51.100572+07	1	11	17	Видеокамера Panasonic V760 черный	3	
+118	2016-05-13 11:46:56.565393+07	1	11	52	Видеокамера Panasonic V760 черный	1	
+119	2016-05-13 11:47:01.571395+07	1	11	18	Видеокамера Panasonic V760 черный	3	
+120	2016-05-13 11:47:05.645914+07	1	11	53	Видеокамера Panasonic V760 черный	1	
+121	2016-05-13 11:47:13.858988+07	1	11	19	Камера со сменной оптикой Samsung NX mini kit 9mm	3	
+122	2016-05-13 11:47:22.269125+07	1	11	54	Камера со сменной оптикой Samsung NX mini kit 9mm	1	
+123	2016-05-13 11:47:31.686753+07	1	11	20	Камера со сменной оптикой Samsung NX mini ki1t 9mm	3	
+124	2016-05-13 11:47:36.009243+07	1	11	55	Камера со сменной оптикой Samsung NX mini ki1t 9mm	1	
+125	2016-05-13 12:32:22.337016+07	1	11	21	Зеркальная камера Nikon D3200 Kit 18-55mm II черны	3	
+126	2016-05-13 12:32:30.637428+07	1	11	56	Зеркальная камера Nikon D3200 Kit 18-55mm II черны	1	
+127	2016-05-13 12:32:37.106986+07	1	11	22	Зеркальная камера Nikon D3200 Kit 18-55mm II черны	3	
+128	2016-05-13 12:32:41.208437+07	1	11	57	Зеркальная камера Nikon D3200 Kit 18-55mm II черны	1	
+129	2016-05-13 12:32:47.445155+07	1	11	23	Компактная камера Rekam iLook S750i серый	3	
+130	2016-05-13 12:32:55.829485+07	1	11	58	Компактная камера Rekam iLook S750i серый	1	
+131	2016-05-13 12:33:01.564735+07	1	11	24	Компактная камера DEXP DC5100 черный	3	
+132	2016-05-13 12:33:09.134238+07	1	11	59	Компактная камера DEXP DC5100 черный	1	
+133	2016-05-13 12:33:14.802876+07	1	11	25	Компактная камера DEXP DC5	3	
+134	2016-05-13 12:33:19.798166+07	1	11	60	Компактная камера DEXP DC5	1	
+135	2016-05-13 12:33:25.947382+07	1	11	26	Наушники Razer Tiamat 7.1	3	
+136	2016-05-13 12:33:44.217069+07	1	11	61	Наушники Razer Tiamat 7.1	1	
+137	2016-05-13 12:33:49.200881+07	1	11	27	Наушники Razer Tiamat 7.1	3	
+138	2016-05-13 12:33:56.411332+07	1	11	62	Наушники Razer Tiamat 7.1	1	
+139	2016-05-13 12:34:01.854942+07	1	11	28	Наушники Razer Tiamat 7.1	3	
+140	2016-05-13 12:34:06.437917+07	1	11	63	Наушники Razer Tiamat 7.1	1	
+141	2016-05-13 12:34:11.177692+07	1	11	29	Наушники Razer Tiamat 7.1	3	
+142	2016-05-13 12:34:16.710088+07	1	11	64	Наушники Razer Tiamat 7.1	1	
+143	2016-05-13 12:35:36.817765+07	1	11	30	Наушники Razer Tiamat 7.1	3	
+144	2016-05-13 12:35:40.845955+07	1	11	65	Наушники Razer Tiamat 7.1	1	
+145	2016-05-13 12:35:45.75118+07	1	11	31	Наушники Razer Tiamat 7.1	3	
+146	2016-05-13 12:35:50.601834+07	1	11	66	Наушники Razer Tiamat 7.1	1	
+147	2016-05-13 12:35:55.228445+07	1	11	32	Наушники Razer Tiamat11	3	
+148	2016-05-13 12:35:59.782101+07	1	11	67	Наушники Razer Tiamat11	1	
+149	2016-05-13 12:36:04.902733+07	1	11	33	Наушники Razer Tiamat 7.111	3	
+150	2016-05-13 12:36:09.121133+07	1	11	68	Наушники Razer Tiamat 7.111	1	
+151	2016-05-13 12:36:13.638708+07	1	11	34	Наушники Razer Tiamat 7.1	3	
+152	2016-05-13 12:36:17.923262+07	1	11	69	Наушники Razer Tiamat 7.1	1	
+153	2016-05-13 12:36:23.222225+07	1	11	37	Видеокамера экшн GoPro Hero+ 	3	
+154	2016-05-13 12:36:27.224137+07	1	11	70	Видеокамера экшн GoPro Hero+ 	1	
+155	2016-05-13 12:36:32.791708+07	1	11	38	Видеокамера экшн GoPro Hero2+ 	3	
+156	2016-05-13 12:36:37.52046+07	1	11	71	Видеокамера экшн GoPro Hero2+ 	1	
+157	2016-05-13 13:00:34.716118+07	1	11	72	Видеокамера экшн GoPro Her	1	
+158	2016-05-13 14:37:52.26197+07	1	10	24	Суперзеркальные12	1	
+159	2016-05-13 14:38:16.708766+07	1	10	24	Суперзеркальные12	3	
+160	2016-05-13 14:44:45.17649+07	1	10	None	Суперзеркальные	1	
+161	2016-05-13 14:45:10.821347+07	1	10	None	Суперзеркальные	1	
+162	2016-05-13 14:53:30.129025+07	1	10	None	Суперзеркальные	1	
+163	2016-05-13 14:55:34.502906+07	1	10	None	Суперзеркальные	1	
+164	2016-05-13 14:55:49.640289+07	1	10	None	Суперзеркальные	1	
+165	2016-05-13 14:56:11.791429+07	1	10	None	Суперзеркальные	1	
+166	2016-05-13 14:56:17.02196+07	1	10	None	Суперзеркальные	1	
+167	2016-05-13 14:56:25.823357+07	1	10	None	Суперзеркальные	1	
+168	2016-05-13 14:56:47.110634+07	1	10	None	Суперзеркальные	1	
+169	2016-05-13 14:56:55.758099+07	1	10	None	Суперзеркальные	1	
+170	2016-05-13 14:57:04.344835+07	1	10	None	Суперзеркальные	1	
+171	2016-05-13 14:57:24.848743+07	1	10	None	Суперзеркальные	1	
+172	2016-05-13 14:57:39.321529+07	1	10	25	Суперзеркальные	1	
+173	2016-05-13 14:57:47.317267+07	1	10	25	Суперзеркальные	3	
+174	2016-05-13 14:57:54.893654+07	1	10	26	Суперзеркальные	1	
+175	2016-05-13 14:58:03.169992+07	1	10	26	Суперзеркальные	3	
+176	2016-05-13 14:58:18.61435+07	1	10	None	Суперзеркальные	1	
+177	2016-05-13 14:59:23.225808+07	1	10	None	Суперзеркальные	1	
+178	2016-05-16 08:43:58.724859+07	1	10	None	Суперзеркальные	1	
 \.
 
 
@@ -823,7 +941,7 @@ COPY django_admin_log (id, action_time, user_id, content_type_id, object_id, obj
 -- Name: django_admin_log_id_seq; Type: SEQUENCE SET; Schema: public; Owner: animkim
 --
 
-SELECT pg_catalog.setval('django_admin_log_id_seq', 60, true);
+SELECT pg_catalog.setval('django_admin_log_id_seq', 178, true);
 
 
 --
@@ -859,6 +977,9 @@ SELECT pg_catalog.setval('django_content_type_id_seq', 11, true);
 COPY django_session (session_key, session_data, expire_date) FROM stdin;
 62079d66d11365f16ee9b4fc51344c1c	NWIzN2Y1YjA1YjYwMmVjMzJmY2UxNWFmOWNmZmU5YWMyN2E5MzRhYzqAAn1xAShVEl9hdXRoX3Vz\nZXJfYmFja2VuZHECVSlkamFuZ28uY29udHJpYi5hdXRoLmJhY2tlbmRzLk1vZGVsQmFja2VuZHED\nVQ1fYXV0aF91c2VyX2lkcQRLAXUu\n	2016-05-12 15:58:28.375738+07
 6b94772083fbe5a5fbe572b48a2a87a8	OGQ4Y2IwZDBiOWU1YzZjNWZiMDU1NDk5NDNhZTMzOGZlOGJmYmFiMTqAAn1xAVUKdGVzdGNvb2tp\nZXECVQZ3b3JrZWRxA3Mu\n	2016-05-18 17:22:00.286155+07
+e1a2f386de8c1159819cfd08a260fe83	OGQ4Y2IwZDBiOWU1YzZjNWZiMDU1NDk5NDNhZTMzOGZlOGJmYmFiMTqAAn1xAVUKdGVzdGNvb2tp\nZXECVQZ3b3JrZWRxA3Mu\n	2016-05-20 10:23:30.758167+07
+3f83ef3e143f5a9296685c37370a9f83	OGQ4Y2IwZDBiOWU1YzZjNWZiMDU1NDk5NDNhZTMzOGZlOGJmYmFiMTqAAn1xAVUKdGVzdGNvb2tp\nZXECVQZ3b3JrZWRxA3Mu\n	2016-05-20 12:01:44.27681+07
+659c70d95ee40066608f0aa61e4c4260	NWIzN2Y1YjA1YjYwMmVjMzJmY2UxNWFmOWNmZmU5YWMyN2E5MzRhYzqAAn1xAShVEl9hdXRoX3Vz\nZXJfYmFja2VuZHECVSlkamFuZ28uY29udHJpYi5hdXRoLmJhY2tlbmRzLk1vZGVsQmFja2VuZHED\nVQ1fYXV0aF91c2VyX2lkcQRLAXUu\n	2016-05-24 09:52:15.054799+07
 \.
 
 
@@ -883,17 +1004,18 @@ SELECT pg_catalog.setval('django_site_id_seq', 1, true);
 --
 
 COPY store_category (id, parent_id, title, slug, image) FROM stdin;
-4	\N	Аудио техника	audio	category_image/AudioEditor.gif
-10	6	Беспроводные наушники	besprovodnye-naushniki	category_image/AudioEditor_1.gif
 11	\N	Видео техника	video-tehnika	category_image/17417_1.jpg
-6	4	Наушники	naushniki	category_image/AudioEditor_2.gif
+4	\N	Аудио техника	audio	category_image/AudioEditor.gif
+23	15	Планшеты большие	planshetyi-bolshie	category_image/8366_3.jpg
 15	\N	Ноутбуки и планшеты	noutbuki-i-planshety	category_image/8366_1.jpg
-16	15	Планшеты фирмы Ace	planshety-firmy-ace	category_image/8366_2.jpg
+10	6	Беспроводные наушники	besprovodnye-naushniki	category_image/AudioEditor_1.gif
 12	6	Проводные наушники	provodnye-naushniki	category_image/AudioEditor_3.gif
-13	11	Фотоаппараты	fotoapparaty	category_image/17417_2.jpg
-14	11	Видеокамеры	videokamery	category_image/17417.jpg
-17	13	Зеркальные фотоаппараты	zerkalnye-fotoapparaty	category_image/44.jpg
 18	13	Компактные фотоаппараты	kompaktnye-fotoapparaty	category_image/77.jpg
+17	13	Зеркальные фотоаппараты	zerkalnye-fotoapparaty	category_image/44.jpg
+6	4	Наушники	naushniki	category_image/AudioEditor_2.gif
+14	11	Видеокамеры	videokamery	category_image/17417.jpg
+13	11	Фотоаппараты	fotoapparaty	category_image/17417_2.jpg
+16	15	Планшеты фирмы Ace	planshety-firmy-ace	category_image/8366_2.jpg
 \.
 
 
@@ -901,7 +1023,7 @@ COPY store_category (id, parent_id, title, slug, image) FROM stdin;
 -- Name: store_category_id_seq; Type: SEQUENCE SET; Schema: public; Owner: animkim
 --
 
-SELECT pg_catalog.setval('store_category_id_seq', 18, true);
+SELECT pg_catalog.setval('store_category_id_seq', 26, true);
 
 
 --
@@ -909,31 +1031,40 @@ SELECT pg_catalog.setval('store_category_id_seq', 18, true);
 --
 
 COPY store_product (id, category_id, title, slug, image) FROM stdin;
-1	4	Радиоприёмник Ritmix RPR-2061	radiopriyomnik-ritmix-rpr-2061	
-2	4	Радиоприёмник Ritmix RPR-2060	radiopriyomnik-ritmix-rpr-2060	
-3	10	Наушники DNS D-15BT	naushniki-dns-d-15bt	
-4	10	Наушники HIPER Sound Space	naushniki-hiper-sound-space	
-5	12	Наушники AUDIO-TECHNICA ATH-ANC9	naushniki-audio-technica-ath-anc9	
-6	12	Наушники Razer Tiamat 7.1	naushniki-razer-tiamat-71	
-7	11	Что-то там	chto-tam	
-8	6	Наушники DNCSS	naushniki-dncss	
-9	4	Колонки Defender Hollywood 35	kolonki-defender-hollywood-35	files/media/111.jpg
-10	4	Колонки Defender Hollywood 34	kolonki-defender-hollywood-34	
-11	4	Колонки Defender Hollywood 33	kolonki-defender-hollywood-33	
-12	4	Колонки Defender Hollywood 31	kolonki-defender-hollywood-31	
-13	4	Колонки Defender Hollywood 22	kolonki-defender-hollywood-22	
-14	11	Штатив DEXP WT-S02 серебристый	shtativ-dexp-wt-s02-serebristyj	files/media/7b04f0ab140ec473772fbd996c747b1ab5e0f63f8f42c76dd54c56abbb6d852a.jpg
-15	11	Штатив ERA ELT-0312 серебристый	shtativ-era-elt-0312-serebristyj	
-16	14	Видеокамера Panasonic V760 черный	videokamera-panasonic-v760-chernyj	files/media/3f7019ee588b026d13f8d55c6266c62a4ec280216ecd0dba3255257de7f4695e.jpg
-17	14	Видеокамера Panasonic V760 черный	videokamera-panasonic-v760-chernyj	
-18	14	Видеокамера Panasonic V760 черный	videokamera-panasonic-v760-chernyj	
-19	13	Камера со сменной оптикой Samsung NX mini kit 9mm	kamera-so-smennoj-optikoj-samsung-nx-mini-kit-9mm	
-20	13	Камера со сменной оптикой Samsung NX mini ki1t 9mm	kamera-so-smennoj-optikoj-samsung-nx-mini-ki1t-9mm	
-21	17	Зеркальная камера Nikon D3200 Kit 18-55mm II черны	zerkalnaya-kamera-nikon-d3200-kit-18-55mm-ii-cherny	
-22	17	Зеркальная камера Nikon D3200 Kit 18-55mm II черны	zerkalnaya-kamera-nikon-d3200-kit-18-55mm-ii-cherny	
-23	18	Компактная камера Rekam iLook S750i серый	kompaktnaya-kamera-rekam-ilook-s750i-seryj	
-24	18	Компактная камера DEXP DC5100 черный	kompaktnaya-kamera-dexp-dc5100-chernyj	
-25	18	Компактная камера DEXP DC5	kompaktnaya-kamera-dexp-dc5	
+65	6	Наушники Razer Tiamat 7.1	naushniki-razer-tiamat-71_65	
+66	6	Наушники Razer Tiamat 7.1	naushniki-razer-tiamat-71_66	
+67	6	Наушники Razer Tiamat11	naushniki-razer-tiamat11_67	
+68	6	Наушники Razer Tiamat 7.111	naushniki-razer-tiamat-7111_68	
+69	6	Наушники Razer Tiamat 7.1	naushniki-razer-tiamat-71_69	
+49	11	Штатив DEXP WT-S02 серебристый	shtativ-dexp-wt-s02-serebristyij_49	item_image/7b04f0ab140ec473772fbd996c747b1ab5e0f63f8f42c76dd54c56abbb6d852a.jpg
+70	14	Видеокамера экшн GoPro Hero+ 	videokamera-ekshn-gopro-hero_70	
+71	14	Видеокамера экшн GoPro Hero2+ 	videokamera-ekshn-gopro-hero2_71	
+72	14	Видеокамера экшн GoPro Her	videokamera-ekshn-gopro-her_72	
+50	11	Штатив ERA ELT-0312 серебристый	shtativ-era-elt-0312-serebristyij_50	
+39	14	Видеокамера экшн GoPro Hero3+ 	videokamera-ekshn-gopro-hero3_39	
+40	4	Радиоприёмник Ritmix RPR-2061	radiopriyomnik-ritmix-rpr-2061_40	
+41	4	Радиоприёмник Ritmix RPR-2060	radiopriyomnik-ritmix-rpr-2060_41	
+42	10	Наушники DNS D-15BT	naushniki-dns-d-15bt_42	
+43	10	Наушники HIPER Sound Space	naushniki-hiper-sound-space_43	
+44	12	Наушники AUDIO-TECHNICA ATH-ANC9	naushniki-audio-technica-ath-anc9_44	
+45	12	Наушники Razer Tiamat 7.1	naushniki-razer-tiamat-71_45	
+46	12	Наушники Razer Tiamat 7.1	naushniki-razer-tiamat-71_46	
+47	6	Наушники DNCSS	naushniki-dncss_47	
+48	4	Колонки Defender Hollywood 22	kolonki-defender-hollywood-22_48	item_image/111.jpg
+51	14	Видеокамера Panasonic V760 черный	videokamera-panasonic-v760-chernyij_51	item_image/3f7019ee588b026d13f8d55c6266c62a4ec280216ecd0dba3255257de7f4695e.jpg
+52	14	Видеокамера Panasonic V760 черный	videokamera-panasonic-v760-chernyij_52	
+53	14	Видеокамера Panasonic V760 черный	videokamera-panasonic-v760-chernyij_53	
+54	13	Камера со сменной оптикой Samsung NX mini kit 9mm	kamera-so-smennoj-optikoj-samsung-nx-mini-kit-9mm_54	
+55	13	Камера со сменной оптикой Samsung NX mini ki1t 9mm	kamera-so-smennoj-optikoj-samsung-nx-mini-ki1t-9mm_55	
+56	17	Зеркальная камера Nikon D3200 Kit 18-55mm II черны	zerkalnaya-kamera-nikon-d3200-kit-18-55mm-ii-chernyi_56	
+57	17	Зеркальная камера Nikon D3200 Kit 18-55mm II черны	zerkalnaya-kamera-nikon-d3200-kit-18-55mm-ii-chernyi_57	
+58	18	Компактная камера Rekam iLook S750i серый	kompaktnaya-kamera-rekam-ilook-s750i-seryij_58	
+59	18	Компактная камера DEXP DC5100 черный	kompaktnaya-kamera-dexp-dc5100-chernyij_59	
+60	18	Компактная камера DEXP DC5	kompaktnaya-kamera-dexp-dc5_60	
+61	6	Наушники Razer Tiamat 7.1	naushniki-razer-tiamat-71_61	
+62	6	Наушники Razer Tiamat 7.1	naushniki-razer-tiamat-71_62	
+63	6	Наушники Razer Tiamat 7.1	naushniki-razer-tiamat-71_63	
+64	6	Наушники Razer Tiamat 7.1	naushniki-razer-tiamat-71_64	
 \.
 
 
@@ -941,7 +1072,7 @@ COPY store_product (id, category_id, title, slug, image) FROM stdin;
 -- Name: store_product_id_seq; Type: SEQUENCE SET; Schema: public; Owner: animkim
 --
 
-SELECT pg_catalog.setval('store_product_id_seq', 25, true);
+SELECT pg_catalog.setval('store_product_id_seq', 72, true);
 
 
 --
