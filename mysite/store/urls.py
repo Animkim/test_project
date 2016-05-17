@@ -6,5 +6,5 @@ urlpatterns = patterns('store.views',
     url(r'^search/$', 'search'),
     url(r'product/([\w\-]+)', 'product_page'),
     url(r'^([\w\D\-]+)/$', 'category'),
-    )ggit
+    )
 
