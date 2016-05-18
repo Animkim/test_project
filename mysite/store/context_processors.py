@@ -4,7 +4,6 @@ from models import Category
 
 def category_list(request):
     categories = list(Category.objects.all())
-
     def rel(all_cat, cat_par):
         a = {}
         for cat in all_cat:
